@@ -35,7 +35,6 @@ class autoloader {
 	public static function add_classes($classes){
 		if(is_array($classes)){
 			self::$_map = array_merge(self::$_map, $classes);
-			echo 'mapped - count: '.count(self::$_map).'<br>';
 			return true;
 		}
 		return false;
@@ -132,7 +131,6 @@ class autoloader {
 	 * @return void
 	 */
 	public static function load_class($class){
-/* 		echo "$class<br>"; */
 		if (null === self::$_namespace || self::$_namespace . self::$_namespace_separator === substr($class, 0, strlen(self::$_namespace . self::$_namespace_separator))) {
 			// Initialize namespace, class, and file
 			$namespace = $file = '';
@@ -144,15 +142,14 @@ class autoloader {
 
 			// Check for namespace
 			if(!empty($namespace)){
-				echo "namespace: $namespace<br>";
+
 				// Check for map of this namespace
-				$newNamespace = $namespace . self::$_namespace_separator . $class;
-				if(isset(self::$_map[$newNamespace])){
+				$newspace = $namespace . self::$_namespace_separator . $class;
+				if(isset(self::$_map[$newspace])){
 
 					// We have a map
-					$path = self::$_map[$newNamespace];
+					$path = self::$_map[$newspace];
 					if(file_exists($path)){
-						echo "path: $path<br>";
 						require_once($path);
 						return true;
 					}
@@ -161,15 +158,13 @@ class autoloader {
 			
 			// Check for file
 			$file .= str_replace('_', DIRECTORY_SEPARATOR, $class) . self::$_file_extension;
-/* 			echo "no namespace: $file<br>"; */
-			
+
+			// Require the file if it exists in our include path
 			if(file_exists(self::$_include_path . $file) || file_exists($file)){
 				require (self::$_include_path !== null ? self::$_include_path . $file : $file);
 			} else {
 				echo "Couldn't load the file: <strong>" . self::$_include_path . "$file</strong><br>";
-/* 				die(self::$_include_path . $file); */
 			}
-			/* 						die('fail'); */
 			return false;
 		}
 	}

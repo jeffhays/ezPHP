@@ -103,7 +103,7 @@ class dBug {
 			//find call to dBug class
 			preg_match('/\bnew dBug\s*\(\s*(.+)\s*\);/i', $code, $arrMatches);
 			
-			return $arrMatches[1];
+			return is_array($arrMatches) && isset($arrMatches[1]) ? $arrMatches[1] : '';
 		}
 		return "";
 	}

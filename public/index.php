@@ -1,6 +1,6 @@
 <?php
 /*
- *	Jeff Hays' new HMVC framework
+ *	Jeff Hays' ez HMVC framework
  *	Version .1 alpha
  */
 
@@ -10,6 +10,7 @@ use ez\config as config;
 
 // Define path constants
 defined('DS') or define('DS', DIRECTORY_SEPARATOR);
+defined('EXT') or define('EXT', '.php');
 defined('BASE') or define('BASE', dirname(dirname(__FILE__)) . DS);
 defined('CONFIG') or define('CONFIG', BASE . 'config' . DS);
 defined('PKG') or define('PKG', BASE . 'packages' . DS);
@@ -41,11 +42,9 @@ if(!function_exists('bootstrap_autoloader')){
 		// Dispatch auto loader
 		autoload::register();
 		
-		echo '<hr>';
-		
 		// Setup reporting
 		if(config::$debug){
-			error_reporting(config::$debug_messages);
+			error_reporting(config::$error_reporting);
 			ini_set('display_errors', 1);
 		} else {
 			error_reporting(0);
@@ -53,8 +52,8 @@ if(!function_exists('bootstrap_autoloader')){
 		}
 		
 		// Setup logging
-		ini_set('log_errors', config::$log);
-		ini_set('error_log', LOG . config::$log_error);
+		ini_set('log_errors', config::$log_errors);
+		ini_set('error_log', LOG . config::$error_log);
 		
 		// Load classes - usage: array(namespace\class => path/to/class.php)
 		autoload::add_classes(array(
@@ -62,6 +61,7 @@ if(!function_exists('bootstrap_autoloader')){
 			'ez\core\route' => CORE . 'routing.php',
 			'ez\core\db' => CORE . 'db.php',
 			'ez\core\ez' => CORE . 'ez.php',
+			'ez\core\view' => CORE . 'view.php',
 			'ez\core\html' => CORE . 'html.php'
 		));
 		
@@ -73,27 +73,23 @@ if(!function_exists('bootstrap_autoloader')){
 			'ez\lib\dBug' => 'dbug',
 			'ez\config' => 'config',
 			'ez\routing' => 'routing',
-			'ez\core\db' => 'db',
 			'ez\core\autoloader' => 'autoload',
-			'ez\core\route' => 'route',
+			'ez\core\db' => 'db',
 			'ez\core\ez' => 'ez',
-			'ez\core\html' => 'html'
+			'ez\core\html' => 'html',
+			'ez\core\route' => 'route',
+			'ez\core\view' => 'view'
 		));
 
 		// Setup database connection
 		db::init(config::dbhost(), config::dbname(), config::dbuser(), config::dbpass());
 
-		dbug::dump(db::i()->select()->from('doit_categories')->asobject());
-
-		// Setup routing from config/routing.php
+		// Add routing from config/routing.php
 		route::add(routing::routes());
-		route::show();
-		route::load();
-		
-		html::css('test');
-		
-		// Call core functions
-		ez::random();
+/* 		route::show(); */
+
+		// Render the view
+		view::render();
 	}
 }
 

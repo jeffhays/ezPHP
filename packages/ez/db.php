@@ -54,7 +54,6 @@ class db extends PDO {
   public function __construct($engine){
     self::$engine = $engine;
     $dns = self::$engine.':dbname='.self::$db.';host='.self::$host;
-    echo $dns;
     parent::__construct($dns, self::$user, self::$pass);
   }
 
