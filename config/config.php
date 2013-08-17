@@ -20,7 +20,7 @@ class config {
 	
 	// Template settings
 	public static $index = 'index';
-	public static $login_url = '/login';
+	public static $login_url = '/admin/login';
 	public static $loggedin_url = '/';
 	
 	// Database
