@@ -7,15 +7,14 @@ class controller extends \ez\app\DefaultController {
 	
 	// Function called before view
 	public static function before(){
-
+		if($_POST){
+			auth::login();
+			parent::dbug($_POST);
+		}
 	}
 	
 	// index action
 	public static function index(){
-		if($_POST){
-			parent::dbug($_POST);
-/* 			auth::login(); */
-		}
 	}
 
 	// Function called after view

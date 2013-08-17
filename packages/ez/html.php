@@ -30,6 +30,7 @@ class html {
 	
 	// Breadcrumbs function
 	public static function breadcrumbs(){
+		// Initialize
 		$crumbs = '';
 		$url = array_filter(explode('/', $_SERVER['REQUEST_URI']), 'strlen');
 		if(is_array($url) && count($url)){
@@ -43,6 +44,7 @@ class html {
 			}
 			$crumbs .= '</nav>';
 		}
+		// Echo out the crumbs
 		echo $crumbs;
 	}
 	

@@ -1,5 +1,6 @@
 <?php
 namespace ez\core;
+use ez\lib\dBug as dbug;
 
 class route {
 
@@ -26,10 +27,60 @@ class route {
 
 	// Show routes
 	public static function show(){
-		echo '<hr>Routes:<hr><pre>';
-		print_r(self::$_map);
-		echo '</pre><hr>';
-		return true;
+		dbug::dump(self::$_map);
+	}
+
+	public static function url(){
+
+		// Get base url without params
+		$path = preg_replace('/\?(.*)/', '', $_SERVER['REQUEST_URI']);
+
+		// Check for routes from our parent class
+		if(is_array(self::$_map) && count(self::$_map)){
+			foreach(self::$_map as $url=>$base){
+
+				// Remove or add surrounding slashes as needed
+				$url = (substr($url, 0, 1) == '/') ? substr($url, 1) : $url;
+				$url = (substr($url, 0, 1) == '/') ? substr($url, 1) : $url;
+				$base = (substr($base, 0, 1) == DS) ? substr($base, 2) : $base;
+				$base = (substr($base, -1) != DS) ? $base . DS: $base;
+		
+				// Prepare string for preg_replace
+				$url = '/' . preg_replace('/\//', '\\\/', $url) . '\//';
+				
+				// Check for matches in our routing map
+				if(preg_match($url, $path)){
+					// We have matches in our routing array
+					$path = preg_replace($url, '', $path);
+					$base = APP . $base;
+		/* 					echo "$url ---> $base ---> $path<br>"; */
+				} else {
+					$base = APP;
+				}
+				
+		/* 				echo "$url ===> $base ===> $path<br>"; */
+		
+				// Setup our default controller, model, and view
+				$lib = explode('/', $path);
+				$lib = array_filter(array_splice($lib, 1), 'strlen');
+				$controller = $model = $view = isset($lib[0]) ? $lib[0] : config::$index;
+				array_shift($lib);
+				$action = isset($lib[0]) ? $lib[0] : config::$index;
+		
+				// Update static files
+				self::$_controller = $controller;
+				self::$_model = $model;
+				self::$_action = $action;
+
+				// Set fully qualified path for each class
+				$controller = $base . 'controllers' . DS . $controller . EXT;
+				$model = $base . 'models' . DS . $model . EXT;
+				$view = $base . 'views' . DS . ($action == config::$index ? self::$_controller : $action);
+				
+				return array($controller, $model, $view);
+			}
+		}
+		// Return something cause there's no map
 	}
 	
 	// Take inbound $url, preg_replace it, then return base path to appropriate controller/view/model

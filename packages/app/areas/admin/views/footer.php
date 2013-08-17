@@ -1,7 +1,7 @@
 	
 	<script>
 	document.write('<script src=' +
-	('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+	('__proto__' in {} ? '<?php echo config::js(); ?>vendor/zepto' : 'js/vendor/jquery') +
 	'.js><\/script>')
 	</script>
 <?php

@@ -2,20 +2,72 @@
 	<div class="row">
 		<div class="large-8 columns">
 			<h3>What is <?php echo config::name(); ?>?</h3>
-
 			<div class="row">
 				<div class="large-12 columns">
 					<div class="panel callout" id="start1">
-						<p>The <?php echo config::name(); ?> is a project created by Jeff Hays in 3 days as a way of learning namespaces and routing from scratch. It's a light weight easy-to-use HMVC framework that was programmed specifically to make it easy to use as possible for developers. This is accomplished by using as many sensible aliases and syntax options as possible.</p>
+						<p>The <?php echo config::name(); ?> is an open source object-oriented HMVC framework written in PHP. The core of the project was mostly developed in 3 days by Jeff Hays as a way of learning namespaces and routing from scratch. It's light weight, easy-to-use, and was programmed specifically to make it easy to use for developers. This is accomplished by autoloading classes and providing as many sensible aliases and syntax options as possible.</p>
+					</div>
+
+					<h3 class="subheader">Model, View, and Controller</h3>
+					<p>The routing is dispatched to load the appropriate controller, model, and the files in the view: <em>header.php</em>, <em>nav.php</em>, <em>index.php</em>, and <em>footer.php</em>. These template partials are of course loaded from the views folder that matches the action name (or the one you routed to a non-default location). Since <?php echo config::name(); ?> is Hierarchical, it will also grab each of those same files from the parent folder if any of them are missing from that view folder</p>
+					<p>Additionally <?php echo config::name(); ?> will load a single file if the filename matches the action name and is in the top level of your view folder. This will load only that file without the <em>header.php</em>, <em>nav.php</em>, and <em>footer.php</em> files. This makes it easy to create a quick landing page that has all the front end content in one spot from top to bottom.</p>
+					<p>This site is a live implementation of <?php echo config::name(); ?> and for those with access to the git repository, this is an exact copy of what you get when downloading the repo.</p>
+
+					<h3 class="subheader"><a name="routing" alt="<?php echo config::title(); ?> Routing" title="<?php echo config::title(); ?> Routing">Routing</a></h3>
+					<div class="panel">
 						<p>The routing was done so you don't have to be a regex nerd to complete the task at hand. It's setup with an associative array where the key of the array is the inbound URL and a value of the directory within packages/app that you want the view to load from (model, view and controller).</p>
 						<p class="textcentered">
 							<code>array('/url/action' => 'app/path');</code>
 							<br>i.e.<br>
 							<code>array('/admin' => 'areas/admin');</code>
 						</p>
-						<p>The routing is then dispatched to load the appropriate controller and model, and load <em>header.php</em>, <em>nav.php</em>, <em>index.php</em>, and <em>footer.php</em> template partials from the folder in the appropriate views folder that matches the action name - as most mvc frameworks do. Since this one is Hierarchical it also will grab each of those same files from the parent folder if any of them are missing from that view folder. It also will load a single file with the action name if it's in the top level of the views folder, which will load only that file without the <em>header.php</em>, <em>nav.php</em>, and <em>footer.php</em> files. This makes it easy to create a quick landing page that has all the front end content in one spot from top to bottom.</p>
-						<p>This site is a live implementation of <?php echo config::name(); ?> and for those with access to the git repository, this is an exact copy of what you get when downloading the repo. <h3 class="subheader">The content below is dummy content...</h3></p>
+						<h4>route::add(<em>array('/admin' => 'areas/admin')</em>);</h4>
+						<p>This function allows you to add routes on the fly. This of course needs to be done before the model, view, and controller, but for those of you that develop your own classes this can come in handy if you want to alter the routes.</p>
+
+						<h4>route::show();</h4>
+						<blockquote>
+							<p><em>Example:</em></p>
+							<p class="textcentered"><code>route::show();</code></p>
+							<p><em>Output:</em></p>
+							<p><?php route::show(); ?></p>
+						</blockquote>
 					</div>
+
+					<h3 class="subheader"><a name="templating" alt="<?php echo config::title(); ?> Templating" title="<?php echo config::title(); ?> Routing">Templating</a></h3>
+					<div class="panel">
+						<h4>view::set(<em>'foo', 'bar'</em>);</h4>
+						<blockquote>
+							<p><em>Result:</em></p>
+							<p>Sets a variable $foo with the value 'bar' that is available to all template partials in the view.</p>
+						</blockquote>
+
+						<h4>html::css(<em>'style.css' <span>[, $echo=true]</span></em>);</h4>
+						<blockquote>
+							<p><em>Example:</em></p>
+							<p class="textcentered"><code>html::css('style.css');</code></p>
+							<p><em>Output:</em></p>
+							<p><pre class="textcentered"><?php echo htmlspecialchars('<link rel="stylesheet" href="/css/style.css">'); ?></pre></p>
+						</blockquote>
+
+						<h4>html::js(<em>'style.js' <span>[, $echo=true]</span></em>);</h4>
+						<blockquote>
+							<p><em>Example:</em></p>
+							<p class="textcentered"><code>html::js('ez.js');</code></p>
+							<p><em>Output:</em></p>
+							<p><pre class="textcentered"><?php echo htmlspecialchars('<script src="/js/ez.js"></script>'); ?></pre></p>
+						</blockquote>
+
+						<h4>html::breadcrumbs();</h4>
+						<blockquote>
+							<p><em>Example:</em></p>
+							<p class="textcentered"><code>html::breadcrumbs();</code></p>
+							<p><em>Output:</em></p>
+							<p><?php html::breadcrumbs(); ?></p>
+							<p>If you don't see any output above, that's because we're on the front page and there are no crumbs to build since we have no path at the end of our URL. Don't worry, I've setup an alternative route so you can see the breadcrumbs on the home page.
+						</blockquote>
+					</div>
+					
+					<h3 class="subheader">The content below is dummy content...</h3>
 				</div>
 			</div>
 			<div class="row">
@@ -76,26 +128,29 @@
 
 		<div class="large-4 columns">
 			<h3>&nbsp;</h3>
+			<div class="panel">
+				<h5 class="subheader">Current <?php echo config::name(); ?> Version: </h5><a class="small orange centered radius button" href="#" alt="Download <?php echo config::name() . ' ' . config::version(); ?>" title="Download <?php echo config::name() . ' ' . config::version(); ?>"><?php echo config::version(); ?></a>
+			</div>
+			<h4><i class="icon-truck medium-icon"></i> What's under the hood...</h4>
+			<p>The <?php echo config::name(); ?> project is a custom object-oriented PHP framework using namespaces. The front end is powered by Foundation CSS, Font Awesome, jQuery, jQuery UI, and all sits on a RESTful URL structure.</p>
+			<p><?php echo config::name(); ?> comes with its own database class that's done in a chained method query builder fashion similar to Kohana 3. The routing is custom and makes it easy to route inbound paths to a base directory to load a different set of models, views, and controllers via a simple array key/value pair.</p>
+			<div class="panel">
+				<h3 class="subheader">Updates:</h3>
+				<ul>
+					<li>Added <code>html::breadcrumbs()</code> function that will echo out Foundation breadcrumbs based on the current URL</li>
+					<li>Recently implemented an admin login page and started the auth class that will handle sessions and user data</li>
+				</ul>
+			</div>
+
 			<h4><i class="icon-rocket medium-icon"></i> Try <?php echo config::name(); ?></h4>
 			<p>Let <?php echo config::name(); ?> start managing your client requests today by signing up for a Free Trial. It's super easy to sign up! Just click the button below to start your free trial.</p>
-			<a class="small radius orange button" href="#" alt="Start Your <?php echo config::name(); ?> Free Trial" title="Start Your <?php echo config::name(); ?> Free Trial">Sign Up Today!</a>
-			<hr>
-			<h4><i class="icon-truck medium-icon"></i> What's under the hood...</h4>
-			<p>The <?php echo config::name(); ?> project is a custom object-oriented PHP framework using namespaces. The front end is powered by Foundation CSS, jQuery, and all sits on a RESTful URL structure.</p>
-			<p><?php echo config::name(); ?> comes with its own database class that's done in a chained method query builder fashion similar to Kohana 3. The routing is custom and makes it easy to route inbound paths to a base directory to load a different set of models, views, and controllers via a simple array key/value pair.</p>
-
-			<div class="panel">
-				<h3 class="subheader">Updates</h3>
-				<p>This means that you get new features automatically rolled out with your membership! We value the feedback of our clients (<u>and</u> your clients) and actively pursue suggestions for added enhancements in our newest version.</p>
-				<p><h5 class="subheader">Current Version <h4 class="subheader"><?php echo config::version(); ?></h4></h5></p>
-			</div>
 					
 			<div class="panel">
 				<h3 class="subheader">To Do:</h3>
 				<ul>
-					<li>Implement user class for - central location for static user data.</li>
-					<li>Move preg_replace string manipulation from view class and move to route::route_url() as originally intended.</li>
-					<li>Add autoload routine for lib folder (and remove from public/index.php).</li>
+					<li>Implement user class for - central location for static user data</li>
+					<li>Move preg_replace string manipulation from view class and move to route::route_url() as originally intended</li>
+					<li>Add autoload routine for lib folder (and remove from public/index.php)</li>
 				</ul>
 			</div>
 			

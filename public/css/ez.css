@@ -15,31 +15,24 @@
 /* Utility classes */
 
 /* Content */
-	#headerlogo {
-		display: block;
-		margin: 0 auto;
+	.panel h4 em {
+		color: #666666;
+		font-weight: 200;
 	}
-	
-	form.order img.th {
-		max-height: 120px;
+	.panel h4 em span {
+		color: #aaaaaa;
+	}
+	footer.main {
+		display: block;
+		width: 100%;
+		height: 2em;
+		clear: both;
+		padding: 1em 1em 4em;
+		color: #ffffff;
+		background: #526a92;
+		border-top-color: #405271;
 	}	
 /* Content */
-
-/* Admin Panel */
-	section.books textarea {
-		min-height: 100px;
-	}
-	section.content textarea {
-		min-height: 100px;
-	}
-	section.email textarea {
-		min-height: 200px;
-	}
-
-	.delbtn.button {
-		margin-right: 5px;
-	}
-/* Admin Panel */
 
 /* Foundation Add-ons */
 	.row {

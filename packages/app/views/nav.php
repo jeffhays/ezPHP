@@ -15,6 +15,18 @@
 					<li class="divider"></li>
 					<li class="active"><a href="/"><i class="icon-info-sign"></i> About</a></li>
 					<li class="divider"></li>
+					<li class="has-dropdown"><a href="/#usage"><i class="icon-code"></i> Usage</a>
+						<ul class="dropdown">
+							<li class="divider"></li>
+							<li><a href="/#routing"><i class="icon-sort-by-attributes-alt"></i> Routing</a></li>
+							<li class="divider"></li>
+							<li><a href="/#templating"><i class="icon-html5"></i> Templating</a></li>
+							<li class="divider"></li>
+						</ul>
+					</li>
+					<li class="divider"></li>
+					<li><a href="/#routing"><i class="icon-sort-by-attributes-alt"></i> Routing</a></li>
+					<li class="divider"></li>
 					<li><a href="/#pricing"><i class="icon-money"></i> Pricing</a></li>
 					<li class="divider"></li>
 <?php if(isset($_SESSION['loggedin'])) { ?>
@@ -65,10 +77,10 @@
 						<?php if(isset($_SESSION['loggedin'])) { ?>
 							<div style="float:left;color:#fff;margin:.6em 1em .6em 0;">Welcome <?php echo $_SESSION['username']; ?>!</div>
 							<form style="float:right" action="/logout" method="post">
-								<button class="small secondary radius button" type="submit"><i class="icon-eject"></i> Logout</button>
+								<button class="small orange radius button" type="submit"><i class="icon-eject"></i> Logout</button>
 							</form>
 						<?php } else { ?>
-<a class="small secondary radius button" href="/admin/login"><i class="icon-key"></i> Login</a>
+<a class="small radius button" href="/admin/login"><i class="icon-key"></i> Login</a>
 						<?php } ?>
 					</li>
 				</ul>

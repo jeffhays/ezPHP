@@ -8,7 +8,7 @@ namespace ez;
 class config {
 
 	// Site settings
-	public static $site_title = 'ezPHP Framework | A simple HMVC framework with very simple routing';
+	public static $site_title = 'ezPHP Framework | A simple HMVC framework with easy routing';
 	public static $site_name = 'ezPHP Framework';
 	public static $site_url = 'http://localhost/';
 	public static $site_version = '.1 alpha';

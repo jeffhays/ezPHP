@@ -11,6 +11,7 @@ class auth {
   // Start session
 	public static function init(){
 		if(!isset($_SESSION) || !is_array($_SESSION)){
+			// Initialize session
 		  ini_set('session.cookie_lifetime', config::$cookie_lifetime);
 			ini_set('session.gc_maxlifetime', config::$gc_maxlifetime);
 			ini_set('session.use_cookies', config::$use_cookies);
@@ -36,13 +37,20 @@ class auth {
 		if((!isset($_SESSION) || !is_array($_SESSION)) && $user && $values){
 			// Setup redirect URL
 			$redirect = $redirect ? $redirect : config::$loggedin_url;
-			// Loop through $values to setup $_SESSION variables
 			// Login successful routine
-			$_SESSION['loggedin'] = true;
-			$_SESSION['username'] = $usercheck->username;
-			$_SESSION['access'] = $usercheck->type;
+			if(is_array($values) && count($values)){
+				// Loop through each value passed in $values
+				foreach($values as $k=>$value){
+					// Set $_SESSION variable
+					$_SESSION[$k] = $value;
+				}
+				return true;
+			}
 			// Forward to $loggedin_url from config
 			header("Location: $redirect");
+		} else {
+			// We have no SESSION, user or values
+			return false;
 		}
 	}
 

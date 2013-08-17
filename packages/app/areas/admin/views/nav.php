@@ -61,10 +61,10 @@
 <?php if(isset($_SESSION['loggedin'])) { ?>
 						<div style="float:left;color:#fff;margin:.6em 1em .6em 0;">Welcome <?php echo $_SESSION['username']; ?>!</div>
 						<form style="float:right" action="/logout" method="post">
-							<button class="small secondary radius button" type="submit"><i class="icon-eject"></i> Logout</button>
+							<button class="small radius button" type="submit"><i class="icon-eject"></i> Logout</button>
 						</form>
 <?php } else { ?>
-						<a class="small secondary radius button" href="/admin/login"><i class="icon-key"></i> Login</a>
+						<a class="small radius button" href="/admin/login"><i class="icon-key"></i> Login</a>
 <?php } ?>
 					</li>
 				</ul>
