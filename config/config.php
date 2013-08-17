@@ -15,7 +15,8 @@ class config {
 	public static $access_log = 'access.log';
 	
 	// Site settings
-	public static $site_title = 'DoIT Engine!';
+	public static $site_title = 'ez PHP Framework | A simple HMVC framework with routing for dummies';
+	public static $site_name = 'ez PHP Framework';
 	public static $site_url = 'http://localhost/';
 	public static $site_version = '1';
 	
@@ -38,6 +39,9 @@ class config {
 	// Site settings functions
 	public static function title(){
 		return self::$site_title;
+	}
+	public static function name(){
+		return self::$site_name;
 	}
 	public static function url(){
 		return self::$site_url;

@@ -20,7 +20,7 @@ class html {
 
 	// CSS function to include stylesheets in header
 	public static function css($filename, $echo=true) {
-		$data = '<link rel="stylesheet" href="' . config::css() . $filename . '">';
+		$data = "\t" . '<link rel="stylesheet" href="' . config::css() . $filename . '">' . "\n";
 		if($echo) {
 			echo $data;
 		} else {

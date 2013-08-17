@@ -1,0 +1,83 @@
+/* Utility classes */
+	.centered {
+		display: block;
+		margin: 0 auto;
+	}
+
+/* Content */
+	#headerlogo {
+		display: block;
+		margin: 0 auto;
+	}
+	
+	form.order img.th {
+		max-height: 120px;
+	}
+	
+	/* Requests */
+		ul.requests > li {
+			border-top: 1px solid #526a92;
+			cursor: pointer;
+/*
+			-webkit-box-shadow: 0px 2px 5px rgba(50, 50, 50, 0.5);
+			-moz-box-shadow:    0px 2px 5px rgba(50, 50, 50, 0.5);
+			box-shadow:         0px 2px 5px rgba(50, 50, 50, 0.5);
+*/
+		}
+		ul.requests > li:last-child {
+			border-bottom: 1px solid #526a92;
+		}
+	/* Requests */
+	
+/* Content */
+
+/* Admin Panel */
+	section.books textarea {
+		min-height: 100px;
+	}
+	section.content textarea {
+		min-height: 100px;
+	}
+	section.email textarea {
+		min-height: 200px;
+	}
+
+	.delbtn.button {
+		margin-right: 5px;
+	}
+/* Admin Panel */
+
+/* Foundation Add-ons */
+	.row {
+		max-width: 90%;
+	}
+	fieldset {
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+	}
+	.success.button,
+	.success.button:hover {
+		color: #000;
+	}
+	.orange.button {
+		background: #eb7338;
+		border: 1px solid #c8612d;
+	}
+	.orange.button:hover {
+		background: #d36731;
+		border: 1px solid #eb7338;
+	}
+/* Foundation Add-ons */
+
+/* Font Awesome Add-ons */
+	.medium-icon {
+		font-size: 2em;
+	}
+	.large-icon {
+		font-size: 3em;
+	}
+	.orange.large-icon {
+		color: #eb7338;
+	}
+/* Font Awesome Add-ons */

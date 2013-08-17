@@ -1,1 +1,1 @@
-<?php echo $test; ?>
+Admin Index

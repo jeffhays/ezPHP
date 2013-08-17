@@ -26,7 +26,7 @@ defined('LOG') or define('LOG', TMP . 'logs' . DS);
 
 if(!function_exists('bootstrap_autoloader')){
 /*
- *	Bootstrap auto load and startup routine
+ *	Bootstrap autoload and startup routine
  */
 	function bootstrap_autoloader(){
 		// Load our modified autoloader class
@@ -81,7 +81,7 @@ if(!function_exists('bootstrap_autoloader')){
 			'ez\core\view' => 'view'
 		));
 
-		// Setup database connection
+		// Initialize database connection
 		db::init(config::dbhost(), config::dbname(), config::dbuser(), config::dbpass());
 
 		// Add routing from config/routing.php

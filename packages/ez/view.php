@@ -5,6 +5,7 @@ namespace ez\core;
 use ez\config as config;
 use ez\app\controller as controller;
 use ez\app\model as model;
+use ez\lib\dBug as dbug;
 
 /*
  *	View class to render components of the view
@@ -17,9 +18,31 @@ class view extends route {
 	protected static $_model;
 	protected static $_action;
 	
-	// Function to set variables from controller to view
+	protected static $_controller_path;
+	protected static $_model_path;
+	protected static $_view_path;
+	
+	// Set variables from controller to view
 	public static function set($name, $value) {
 		self::$_variables[$name] = $value;
+	}
+	
+	// Debug loaded files
+	public static function debug(){
+		$values = array(
+			'classes' => array(
+				'controller' => self::$_controller,
+				'model' => self::$_model,
+				'action' => self::$_action
+			),
+			'paths' => array(
+				'controller' => self::$_controller_path,
+				'model' => self::$_model_path,
+				'view' => self::$_view_path
+			)
+		);
+
+		dbug::dump($values);
 	}
 
 	// Function to render the view based on routes and current URL
@@ -60,7 +83,7 @@ class view extends route {
 				array_shift($lib);
 				$action = isset($lib[0]) ? $lib[0] : config::$index;
 
-				// Update static variables
+				// Update static files
 				self::$_controller = $controller;
 				self::$_model = $model;
 				self::$_action = $action;
@@ -68,8 +91,17 @@ class view extends route {
 				// Set fully qualified path for each class
 				$controller = $base . 'controllers' . DS . $controller . EXT;
 				$model = $base . 'models' . DS . $model . EXT;
-				$view = $base . 'views' . DS . $action;
+				$view = $base . 'views' . DS . ($action == config::$index ? self::$_controller : $action);
 				
+				// Update static paths
+				self::$_controller_path = $controller;
+				self::$_model_path = $model;
+				self::$_view_path = $view;
+				
+				// Debug
+/* 				self::debug(); */
+
+				// Warn if file doesn't exist				
 				if(!file_exists($controller)) die($controller . ' doesnt exist yo');
 
 				// Model
@@ -124,9 +156,10 @@ class view extends route {
 				}
 				
 				// Call controller after() function
-				controller::after();				
+				controller::after();
 			}
-		}
+		}		
+		
 	}
 
 }
