@@ -88,7 +88,6 @@ if(!function_exists('bootstrap_autoloader')){
 
 		// Add routing from config/routing.php
 		route::add(routing::routes());
-/* 		route::show(); */
 
 		// Render the view
 		view::render();
