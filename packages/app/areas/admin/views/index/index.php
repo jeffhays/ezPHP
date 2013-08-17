@@ -1,1 +1,1 @@
-Admin Index
+<h1>ADMIN INDEX</h1>

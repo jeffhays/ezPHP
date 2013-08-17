@@ -11,10 +11,6 @@ class controller extends \ez\app\DefaultController {
 	
 	public static function index(){
 		view::set('test', 'something');
-/* 		db::i()->select()->from('doit_users')->debug(); */
-/* 		view::set('test', 'something'); */
-/* 		dbug::dump(db::i()->select()->from('doit_users')->asobject()); */
-		echo 'INDEX FUNCTION CALLED!!!!!';
 	}
 	
 	public static function after(){

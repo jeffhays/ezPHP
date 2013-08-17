@@ -8,7 +8,7 @@
 						<p>The <?php echo config::name(); ?> is a project created by Jeff Hays in 3 days as a way of learning namespaces and routing from scratch. It's a light weight easy-to-use HMVC framework that was programmed specifically to make it easy to use as possible for developers. This is accomplished by using as many sensible aliases and syntax options as possible.</p>
 						<p>The routing was done so you don't have to be a regex nerd to complete the task at hand. It's setup with an associative array where the key of the array is the inbound URL and a value of the directory within packages/app that you want the view to load from (model, view and controller).</p>
 						<p class="textcentered">
-							<code>array('/url/path' => 'app/url');</code>
+							<code>array('/url/action' => 'app/path');</code>
 							<br>i.e.<br>
 							<code>array('/admin' => 'areas/admin');</code>
 						</p>
@@ -74,6 +74,7 @@
 		</div>
 
 		<div class="large-4 columns">
+			<h3>&nbsp;</h3>
 			<h4><i class="icon-rocket medium-icon"></i> Try <?php echo config::name(); ?></h4>
 			<p>Let <?php echo config::name(); ?> start managing your client requests today by signing up for a Free Trial. It's super easy to sign up! Just click the button below to start your free trial.</p>
 			<a class="small radius orange button" href="#" alt="Start Your <?php echo config::name(); ?> Free Trial" title="Start Your <?php echo config::name(); ?> Free Trial">Sign Up Today!</a>

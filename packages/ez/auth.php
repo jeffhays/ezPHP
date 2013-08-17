@@ -8,8 +8,7 @@ use ez\config as config;
  
 class auth {
 
-	public static $userdata = false;
-  
+  // Start session
 	public static function init(){
 		if(!isset($_SESSION) || !is_array($_SESSION)){
 		  ini_set('session.cookie_lifetime', config::$cookie_lifetime);
@@ -33,19 +32,17 @@ class auth {
   }
 
 	// User login function
-	public static function login($redirect=false){
-		$redirect = $redirect ? $redirect : config::$loggedin_url;
-		// Check for POST
-		if(is_array($_POST) && isset($_POST['username']) && isset($_POST['password'])){
-			$usercheck = db::i()->select()->from('doit_users')->where('username', '=', $_POST['username'])->andwhere('password', '=', md5($_POST['password']))->row();
-			if(is_array($usercheck)){
-				// Login successful
-				self::$userdata = $usercheck;
-				$_SESSION['loggedin'] = true;
-				$_SESSION['username'] = $usercheck->username;
-				$_SESSION['access'] = $usercheck->type;
-				header("Location: $redirect");
-			}
+	public static function login($user=false, $values=false, $redirect=false){
+		if((!isset($_SESSION) || !is_array($_SESSION)) && $user && $values){
+			// Setup redirect URL
+			$redirect = $redirect ? $redirect : config::$loggedin_url;
+			// Loop through $values to setup $_SESSION variables
+			// Login successful routine
+			$_SESSION['loggedin'] = true;
+			$_SESSION['username'] = $usercheck->username;
+			$_SESSION['access'] = $usercheck->type;
+			// Forward to $loggedin_url from config
+			header("Location: $redirect");
 		}
 	}
 
