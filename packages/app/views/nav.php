@@ -15,6 +15,8 @@
 					<li class="divider"></li>
 					<li class="active"><a href="/"><i class="icon-info-sign"></i> About</a></li>
 					<li class="divider"></li>
+					<li><a href="/#routing"><i class="icon-sort-by-attributes-alt"></i> Routing</a></li>
+					<li class="divider"></li>
 					<li class="has-dropdown"><a href="/#usage"><i class="icon-code"></i> Usage</a>
 						<ul class="dropdown">
 							<li class="divider"></li>
@@ -24,8 +26,6 @@
 							<li class="divider"></li>
 						</ul>
 					</li>
-					<li class="divider"></li>
-					<li><a href="/#routing"><i class="icon-sort-by-attributes-alt"></i> Routing</a></li>
 					<li class="divider"></li>
 					<li><a href="/#pricing"><i class="icon-money"></i> Pricing</a></li>
 					<li class="divider"></li>
