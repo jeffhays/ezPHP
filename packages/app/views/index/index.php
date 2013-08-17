@@ -16,7 +16,7 @@
 					<h3 class="subheader"><a name="routing" alt="<?php echo config::title(); ?> Routing" title="<?php echo config::title(); ?> Routing">Routing</a></h3>
 					<div class="panel">
 						<p>The routing was done so you don't have to be a regex nerd to complete the task at hand. It's setup with an associative array where the key of the array is the inbound URL and a value of the directory within packages/app that you want the view to load from (model, view and controller).</p>
-						<p class="textcentered">
+						<p class="text-center">
 							<code>array('/url/action' => 'app/path');</code>
 							<br>i.e.<br>
 							<code>array('/admin' => 'areas/admin');</code>
@@ -27,9 +27,9 @@
 						<h4>route::show();</h4>
 						<blockquote>
 							<p><em>Example:</em></p>
-							<p class="textcentered"><code>route::show();</code></p>
+							<p class="text-center"><code>route::show();</code></p>
 							<p><em>Output:</em></p>
-							<p><?php route::show(); ?></p>
+							<p><div class="centered"><?php route::show(); ?></div></p>
 						</blockquote>
 					</div>
 
@@ -44,23 +44,23 @@
 						<h4>html::css(<em>'style.css' <span>[, $echo=true]</span></em>);</h4>
 						<blockquote>
 							<p><em>Example:</em></p>
-							<p class="textcentered"><code>html::css('style.css');</code></p>
+							<p class="text-center"><code>html::css('style.css');</code></p>
 							<p><em>Output:</em></p>
-							<p><pre class="textcentered"><?php echo htmlspecialchars('<link rel="stylesheet" href="/css/style.css">'); ?></pre></p>
+							<p><pre class="text-center"><?php echo htmlspecialchars('<link rel="stylesheet" href="/css/style.css">'); ?></pre></p>
 						</blockquote>
 
 						<h4>html::js(<em>'style.js' <span>[, $echo=true]</span></em>);</h4>
 						<blockquote>
 							<p><em>Example:</em></p>
-							<p class="textcentered"><code>html::js('ez.js');</code></p>
+							<p class="text-center"><code>html::js('ez.js');</code></p>
 							<p><em>Output:</em></p>
-							<p><pre class="textcentered"><?php echo htmlspecialchars('<script src="/js/ez.js"></script>'); ?></pre></p>
+							<p><pre class="text-center"><?php echo htmlspecialchars('<script src="/js/ez.js"></script>'); ?></pre></p>
 						</blockquote>
 
 						<h4>html::breadcrumbs();</h4>
 						<blockquote>
 							<p><em>Example:</em></p>
-							<p class="textcentered"><code>html::breadcrumbs();</code></p>
+							<p class="text-center"><code>html::breadcrumbs();</code></p>
 							<p><em>Output:</em></p>
 							<p><?php html::breadcrumbs(); ?></p>
 							<p>If you don't see any output above, that's because we're on the front page and there are no crumbs to build since we have no path at the end of our URL. Don't worry, I've setup an alternative route so you can see the breadcrumbs on the home page.

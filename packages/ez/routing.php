@@ -1,25 +1,37 @@
 <?php
 namespace ez\core;
+use ez\config as config;
 use ez\lib\dBug as dbug;
 
 class route {
 
 	// Default routes
-	public static $_map = array();
+	public static $map = array();
+
+	// Routed classes
+	public static $controller;
+	public static $model;
+	public static $action;
+
+	// Routed paths
+	public static $base;
+	public static $controller_path;
+	public static $model_path;
+	public static $view;
 
 	// Add routes
 	public static function add($routes){
 		if(is_array($routes)){
-			self::$_map = array_merge(self::$_map, $routes);
+			self::$map = array_merge(self::$map, $routes);
 			return true;
 		}
 		return false;
 	}
 
 	// Remove routes
-	public static function remove($route){
-		if(is_array($route) && array_key_exists(self::$_map, $route)){
-			unset(self::$_map[$route]);
+	public static function rm($route){
+		if(is_array($route) && array_key_exists(self::$map, $route)){
+			unset(self::$map[$route]);
 			return true;
 		}
 		return false;
@@ -27,17 +39,18 @@ class route {
 
 	// Show routes
 	public static function show(){
-		dbug::dump(self::$_map);
+		ez::dbug(self::$map);
 	}
 
+	// Route current URL
 	public static function url(){
 
 		// Get base url without params
 		$path = preg_replace('/\?(.*)/', '', $_SERVER['REQUEST_URI']);
 
 		// Check for routes from our parent class
-		if(is_array(self::$_map) && count(self::$_map)){
-			foreach(self::$_map as $url=>$base){
+		if(is_array(self::$map) && count(self::$map)){
+			foreach(self::$map as $url=>$base){
 
 				// Remove or add surrounding slashes as needed
 				$url = (substr($url, 0, 1) == '/') ? substr($url, 1) : $url;
@@ -66,31 +79,25 @@ class route {
 				$controller = $model = $view = isset($lib[0]) ? $lib[0] : config::$index;
 				array_shift($lib);
 				$action = isset($lib[0]) ? $lib[0] : config::$index;
-		
-				// Update static files
-				self::$_controller = $controller;
-				self::$_model = $model;
-				self::$_action = $action;
+
+				// Update static class variables
+				self::$controller = $controller;
+				self::$model = $model;
+				self::$action = $action;
 
 				// Set fully qualified path for each class
 				$controller = $base . 'controllers' . DS . $controller . EXT;
 				$model = $base . 'models' . DS . $model . EXT;
-				$view = $base . 'views' . DS . ($action == config::$index ? self::$_controller : $action);
+				$view = $base . 'views' . DS . ($action == config::$index ? self::$controller : $action);
 				
-				return array($controller, $model, $view);
+				// Update static path variables
+				self::$base = $base;
+				self::$controller_path = $controller;
+				self::$model_path = $model;
+				self::$view = $view;
 			}
 		}
 		// Return something cause there's no map
-	}
-	
-	// Take inbound $url, preg_replace it, then return base path to appropriate controller/view/model
-	public static function route_url($url){
-		foreach($routing as $pattern => $result){
-			if(preg_match($pattern, $url)) {
-				return preg_replace($pattern, $result, $url);
-			}
-		}
-		return $url;
-	}
+	}	
 	
 }

@@ -5,9 +5,6 @@
 /* Global styles */
 
 /* Utility classes */
-	.textcentered {
-		text-align: center;
-	}
 	.centered {
 		display: block;
 		margin: 0 auto;

@@ -28,17 +28,23 @@ class view extends route {
 	}
 	
 	// Debug loaded files
-	public static function debug(){
+	public static function dbug(){
 		$values = array(
 			'classes' => array(
-				'controller' => self::$_controller,
-				'model' => self::$_model,
-				'action' => self::$_action
+				'controller' => route::$controller,
+				'model' => route::$model,
+				'action' => route::$action
 			),
 			'paths' => array(
-				'controller' => self::$_controller_path,
-				'model' => self::$_model_path,
-				'view' => self::$_view_path
+				'controller' => array(
+					route::$controller_path => (file_exists(route::$controller_path) ? 'Exists' : 'Not There')
+				),
+				'model' => array(
+					route::$model_path => (file_exists(route::$model_path) ? 'Exists' : 'Not There')
+				),
+				'view' => array(
+					route::$view => (file_exists(route::$view) ? 'Exists' : 'Not There')
+				)
 			)
 		);
 
@@ -46,120 +52,76 @@ class view extends route {
 	}
 
 	// Function to render the view based on routes and current URL
-  public static function render($noheader=false) {
+	public static function render($noheader=false) {
 
 		// Get base url without params
 		$path = preg_replace('/\?(.*)/', '', $_SERVER['REQUEST_URI']);
 
-		// Check for routes from our parent class
-		if(is_array(parent::$_map) && count(parent::$_map)){
-			foreach(parent::$_map as $url=>$base){
+		// Check for routes from our route class
+		if(is_array(route::$map) && count(route::$map)){
+			
+			// Route the URL to the various model/view/controller locations
+			route::url();
+/* 			self::dbug(); */
+			
+			// Warn if controller doesn't exist
+			if(!file_exists(route::$controller_path)) die('<h1 class="alert">' . route::$controller_path . ' doesnt exist yo</div>');
 
-				// Remove or add surrounding slashes as needed
-				$url = (substr($url, 0, 1) == '/') ? substr($url, 1) : $url;
-				$url = (substr($url, 0, 1) == '/') ? substr($url, 1) : $url;
-				$base = (substr($base, 0, 1) == DS) ? substr($base, 2) : $base;
-				$base = (substr($base, -1) != DS) ? $base . DS: $base;
+			// Model
+			if(file_exists(LIB . 'defaultmodel.php')) require_once(LIB . 'defaultmodel.php');
+			if(file_exists(route::$model_path)) require_once(route::$model_path);
 
-				// Prepare string for preg_replace
-				$url = '/' . preg_replace('/\//', '\\\/', $url) . '\//';
-				
-				// Check for matches in our routing map
-				if(preg_match($url, $path)){
-					// We have matches in our routing array
-					$path = preg_replace($url, '', $path);
-					$base = APP . $base;
-/* 					echo "$url ---> $base ---> $path<br>"; */
+			// Controller
+			if(file_exists(LIB . 'defaultcontroller.php')) require_once(LIB . 'defaultcontroller.php');
+			if(file_exists(route::$controller_path)) require_once(route::$controller_path);
+
+			// Call controller before() and action() functions
+			controller::before();
+			$action = route::$action;
+			controller::$action();
+
+			// Set variables
+			extract(self::$_variables);
+			
+			// View
+			if(is_dir(route::$view)){
+
+				// Header
+				if(file_exists(route::$view . DS . 'header' . EXT)){
+					include(route::$view . DS . 'header' . EXT);
 				} else {
-					$base = APP;
+					include(route::$base . 'views' . DS . 'header' . EXT);
 				}
 				
-/* 				echo "$url ===> $base ===> $path<br>"; */
-
-				// Setup our default controller, model, and view
-				$lib = explode('/', $path);
-				$lib = array_filter(array_splice($lib, 1), 'strlen');
-				$controller = $model = $view = isset($lib[0]) ? $lib[0] : config::$index;
-				array_shift($lib);
-				$action = isset($lib[0]) ? $lib[0] : config::$index;
-
-				// Update static files
-				self::$_controller = $controller;
-				self::$_model = $model;
-				self::$_action = $action;
-				
-				// Set fully qualified path for each class
-				$controller = $base . 'controllers' . DS . $controller . EXT;
-				$model = $base . 'models' . DS . $model . EXT;
-				$view = $base . 'views' . DS . ($action == config::$index ? self::$_controller : $action);
-				
-				// Update static paths
-				self::$_controller_path = $controller;
-				self::$_model_path = $model;
-				self::$_view_path = $view;
-				
-				// Debug
-/* 				self::debug(); */
-
-				// Warn if file doesn't exist				
-				if(!file_exists($controller)) die($controller . ' doesnt exist yo');
-
-				// Model
-				if(file_exists(LIB . 'defaultmodel.php')) require_once(LIB . 'defaultmodel.php');
-				if(file_exists($model)) require_once($model);
-
-				// Controller
-				if(file_exists(LIB . 'defaultcontroller.php')) require_once(LIB . 'defaultcontroller.php');
-				if(file_exists($controller)) require_once($controller);
-
-				// Call controller before() and action() functions
-				controller::before();
-				controller::$action();
-
-				// Set variables
-				extract(self::$_variables);
+				// Nav
+				if(file_exists(route::$view . DS . 'nav' . EXT)){
+					include(route::$view . DS . 'nav' . EXT);
+				} else {
+					include(route::$base . 'views' . DS . 'nav' . EXT);
+				}
 				
 				// View
-				if(is_dir($view)){
-
-					// Header
-					if(file_exists($view . DS . 'header' . EXT)){
-						include($view . DS . 'header' . EXT);
-					} else {
-						include($base . 'views' . DS . 'header' . EXT);
-					}
-					
-					// Nav
-					if(file_exists($view . DS . 'nav' . EXT)){
-						include($view . DS . 'nav' . EXT);
-					} else {
-						include($base . 'views' . DS . 'nav' . EXT);
-					}
-					
-					// View
-					if(file_exists($view . DS . $action . EXT)){
-						include($view . DS . $action . EXT);
-					} else {
-						include($base . 'views' . DS . config::$index . EXT);
-					}
-					
-					// Footer
-					if(file_exists($view . DS . 'footer' . EXT)){
-						include($view . DS . 'footer' . EXT);
-					} else {
-						include($base . 'views' . DS . 'footer' . EXT);
-					}
-					
-				} else if(file_exists($view . EXT)){
-					// View file instead of folder
-					include($view . EXT);
+				if(file_exists(route::$view . DS . $action . EXT)){
+					include(route::$view . DS . $action . EXT);
+				} else {
+					include(route::$base . 'views' . DS . config::$index . EXT);
 				}
 				
-				// Call controller after() function
-				controller::after();
+				// Footer
+				if(file_exists(route::$view . DS . 'footer' . EXT)){
+					include(route::$view . DS . 'footer' . EXT);
+				} else {
+					include(route::$base . 'views' . DS . 'footer' . EXT);
+				}
+				
+			} else if(file_exists(route::$view . EXT)){
+				// View file instead of folder
+				include(route::$view . EXT);
 			}
-		}		
-		
-	}
+			
+			// Call controller after() function
+			controller::after();
+		}
+	}		
 
 }

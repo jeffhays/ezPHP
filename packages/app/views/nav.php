@@ -27,8 +27,6 @@
 						</ul>
 					</li>
 					<li class="divider"></li>
-					<li><a href="/#pricing"><i class="icon-money"></i> Pricing</a></li>
-					<li class="divider"></li>
 <?php if(isset($_SESSION['loggedin'])) { ?>
 					<li class="has-dropdown"><a href="#">Main Item 3</a>
 					
@@ -68,6 +66,8 @@
 				
 				<!-- Right Nav Section -->
 				<ul class="right">
+					<li class="divider hide-for-small"></li>
+					<li><a href="/#pricing"><i class="icon-money"></i> Pricing</a></li>
 					<li class="divider hide-for-small"></li>
 <!--
 					<li>Requests</li>
