@@ -10,7 +10,7 @@ class html {
 
 	// JS function to include javascript in footer
 	public static function js($filename, $echo=true) {
-		$data = '<script src="' . config::js() . $filename . '"></script>';
+		$data = "\t" . '<script src="' . config::js() . $filename . '"></script>' . "\n";
 		if($echo) {
 			echo $data;
 		} else {

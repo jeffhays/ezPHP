@@ -1,24 +1,17 @@
 <?php
 namespace ez;
 
-/*
+/*	
  *	All default configs go here
  */
 
 class config {
 
-	// Error reporting
-	public static $debug = true;
-	public static $error_reporting = E_ALL;
-	public static $log_errors = true;
-	public static $error_log = 'error.log';
-	public static $access_log = 'access.log';
-	
 	// Site settings
-	public static $site_title = 'ez PHP Framework | A simple HMVC framework with routing for dummies';
-	public static $site_name = 'ez PHP Framework';
+	public static $site_title = 'ezPHP Framework | A simple HMVC framework with very simple routing';
+	public static $site_name = 'ezPHP Framework';
 	public static $site_url = 'http://localhost/';
-	public static $site_version = '1';
+	public static $site_version = '.1 alpha';
 	
 	// Paths
 	public static $site_css = '/css/';
@@ -27,6 +20,8 @@ class config {
 	
 	// Template settings
 	public static $index = 'index';
+	public static $login_url = '/login';
+	public static $loggedin_url = '/';
 	
 	// Database
 	private static $_dbengine = 'mysql';
@@ -35,8 +30,26 @@ class config {
 	private static $_dbuser = 'doit';
 	private static $_dbpass = 'doitkthxbye!';
 
-
+	// Error reporting
+	public static $debug = true;
+	public static $error_reporting = E_ALL;
+	public static $log_errors = true;
+	public static $error_log = 'error.log';
+	public static $access_log = 'access.log';
+	
+	// Session settings
+	public static $session_path = '/tmp/sessions';
+	public static $cookie_lifetime = '7776000';
+	public static $gc_maxlifetime = '7776000';
+	public static $use_cookies = 'on';
+	public static $use_only_cookies = 'on';
+	public static $use_trans_sid = 'off';
+	
 	// Site settings functions
+	
+	public static function test(){
+		die('test');
+	}
 	public static function title(){
 		return self::$site_title;
 	}

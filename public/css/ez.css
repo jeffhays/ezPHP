@@ -1,8 +1,18 @@
+/* Global styles */
+	.panel ul {
+		padding-left: 1em;
+	}
+/* Global styles */
+
 /* Utility classes */
+	.textcentered {
+		text-align: center;
+	}
 	.centered {
 		display: block;
 		margin: 0 auto;
 	}
+/* Utility classes */
 
 /* Content */
 	#headerlogo {
@@ -12,23 +22,7 @@
 	
 	form.order img.th {
 		max-height: 120px;
-	}
-	
-	/* Requests */
-		ul.requests > li {
-			border-top: 1px solid #526a92;
-			cursor: pointer;
-/*
-			-webkit-box-shadow: 0px 2px 5px rgba(50, 50, 50, 0.5);
-			-moz-box-shadow:    0px 2px 5px rgba(50, 50, 50, 0.5);
-			box-shadow:         0px 2px 5px rgba(50, 50, 50, 0.5);
-*/
-		}
-		ul.requests > li:last-child {
-			border-bottom: 1px solid #526a92;
-		}
-	/* Requests */
-	
+	}	
 /* Content */
 
 /* Admin Panel */

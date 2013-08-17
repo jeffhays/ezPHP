@@ -58,6 +58,7 @@ if(!function_exists('bootstrap_autoloader')){
 		// Load classes - usage: array(namespace\class => path/to/class.php)
 		autoload::add_classes(array(
 			'ez\lib\dBug' => LIB . 'dbug.php',
+			'ez\core\auth' => CORE . 'auth.php',
 			'ez\core\route' => CORE . 'routing.php',
 			'ez\core\db' => CORE . 'db.php',
 			'ez\core\ez' => CORE . 'ez.php',
@@ -73,6 +74,7 @@ if(!function_exists('bootstrap_autoloader')){
 			'ez\lib\dBug' => 'dbug',
 			'ez\config' => 'config',
 			'ez\routing' => 'routing',
+			'ez\core\auth' => 'auth',
 			'ez\core\autoloader' => 'autoload',
 			'ez\core\db' => 'db',
 			'ez\core\ez' => 'ez',

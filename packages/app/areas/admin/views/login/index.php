@@ -19,7 +19,7 @@
           <input type="password" name="password" id="password" placeholder="password">
         </div>
       </div>
-      <input type="submit" class="small button radius" name="login" id="login" value="LogIn">
+      <input type="submit" class="small button radius" name="login" id="login" value="Login">
     </fieldset>
 
     <?php if(isset($error) && strlen($error)){ ?>
