@@ -15,7 +15,7 @@ class routing {
 	// Routes
 	private static $_routes = array(
 		'/admin' => 'areas/admin',
-		'/crumbs' => 'index',
+		'/crumbs' => '',
 	);
 	
 	// Return routes

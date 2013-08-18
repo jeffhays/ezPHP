@@ -138,6 +138,7 @@
 				<h3 class="subheader">Updates:</h3>
 				<ul>
 					<li>Added <code>html::breadcrumbs()</code> function that will echo out Foundation breadcrumbs based on the current URL</li>
+					<li>Added <code>route::url()</code> function to handle all controller/model/view paths in the route class</li>
 					<li>Recently implemented an admin login page and started the auth class that will handle sessions and user data</li>
 				</ul>
 			</div>
@@ -149,7 +150,6 @@
 				<h3 class="subheader">To Do:</h3>
 				<ul>
 					<li>Implement user class for - central location for static user data</li>
-					<li>Move preg_replace string manipulation from view class and move to route::route_url() as originally intended</li>
 					<li>Add autoload routine for lib folder (and remove from public/index.php)</li>
 				</ul>
 			</div>
