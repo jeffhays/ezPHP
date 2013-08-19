@@ -14,7 +14,7 @@ class controller extends \ez\app\DefaultController {
 	}
 	
 	// index action
-	public static function index(){
+	public static function login(){
 	}
 
 	// Function called after view

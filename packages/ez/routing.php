@@ -14,7 +14,7 @@ class route {
 	public static $action;
 
 	// Routed paths
-	public static $base;
+	public static $base = false;
 	public static $controller_path = false;
 	public static $model_path = false;
 	public static $view = false;
@@ -70,6 +70,7 @@ class route {
 					self::$_match = true;
 					$path = preg_replace($url, '', $path);
 					$base = $base == '/' ? APP : APP . $base;
+					self::$base = $base;
 				} else {
 					$base = APP;
 				}
@@ -78,40 +79,53 @@ class route {
 				$lib = explode('/', $path);
 				$lib = array_filter(array_splice($lib, 1), 'strlen');
 
+				// Check for routing match
 				if(self::$_match && !self::$controller){
-					// Routing match
+					// Set action
+					if(!self::$action) self::$action = isset($lib[0]) ? $lib[0] : config::$index;
+
+					// Update static class variables
 					$controller = $model = $view = (isset($lib[0]) && trim($lib[0]) != '/') ? $lib[0] : config::$index;
+					self::$controller = $controller;
+					self::$model = $model;
+
+					// Update static path variables
 					self::$controller_path = $base . 'controllers' . DS . $controller . EXT;
 					self::$model_path = $base . 'models' . DS . $model . EXT;
-				} else if(!self::$controller){
-					// No match
-					$controller = $model = $view = (isset($lib[0]) && trim($lib[0]) != '/') ? $lib[0] : config::$index;
+					self::$view = $base . 'views' . DS . self::$action;
 				}
-
-				// Set action
-				array_shift($lib);
-				if(!self::$action) $action = isset($lib[0]) ? $lib[0] : config::$index;
-		
-				// Update static class variables
-				if(!self::$controller) self::$controller = $controller;
-				if(!self::$model) self::$model = $model;
-				if(!self::$action) self::$action = $action;
-		
-				// Set fully qualified path for each class
-				$controller = $base . 'controllers' . DS . $controller . EXT;
-				$model = $base . 'models' . DS . $model . EXT;
-				$view = $base . 'views' . DS . ($action == config::$index ? self::$controller : $action);
-				
-				// Update static path variables
-				self::$base = $base;
-				if(!self::$controller_path) self::$controller_path = $controller;
-				if(!self::$model_path) self::$model_path = $model;
-				if(!self::$view) self::$view = $view;
 
 /* 				view::dbug(); */
 			}
 		}
 
+		// No match
+		$controller = $model = $view = (isset($lib[0]) && trim($lib[0]) != '/') ? $lib[0] : config::$index;
+
+		if(!self::$_match){
+			// Set action
+			array_shift($lib);
+			if(!self::$action) $action = isset($lib[0]) ? $lib[0] : config::$index;
+	
+			// Update static class variables
+			if(!self::$controller) self::$controller = $controller;
+			if(!self::$model) self::$model = $model;
+			if(!self::$action) self::$action = $action;
+	
+			// Set fully qualified path for each class
+			$controller = $base . 'controllers' . DS . $controller . EXT;
+			$model = $base . 'models' . DS . $model . EXT;
+			$view = $base . 'views' . DS;
+			$view .= (self::$_match && $path == '/') ? config::$index : self::$controller;
+/* 				$view = $base . 'views' . DS . ($action == config::$index ? self::$controller : $action); */
+			
+			// Update static path variables
+			self::$base = $base;
+			if(!self::$controller_path) self::$controller_path = $controller;
+			if(!self::$model_path) self::$model_path = $model;
+			if(!self::$view) self::$view = $view;
+		}
+		
 	}	
 	
 }

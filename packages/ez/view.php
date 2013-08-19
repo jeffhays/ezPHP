@@ -104,7 +104,7 @@ class view extends route {
 				if(file_exists(route::$view . DS . $action . EXT)){
 					include(route::$view . DS . $action . EXT);
 				} else {
-					include(route::$base . 'views' . DS . config::$index . EXT);
+					include(route::$base . 'views' . DS . route::$action . DS . config::$index . EXT);
 				}
 				
 				// Footer

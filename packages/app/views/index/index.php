@@ -57,13 +57,13 @@
 							<p><pre class="text-center"><?php echo htmlspecialchars('<script src="/js/ez.js"></script>'); ?></pre></p>
 						</blockquote>
 
-						<h4>html::breadcrumbs();</h4>
+						<h4>html::breadcrumbs();</h4><a name="crumbs"></a>
 						<blockquote>
 							<p><em>Example:</em></p>
 							<p class="text-center"><code>html::breadcrumbs();</code></p>
 							<p><em>Output:</em></p>
 							<p><?php html::breadcrumbs(); ?></p>
-							<p>If you don't see any output above, that's because we're on the front page and there are no crumbs to build since we have no path at the end of our URL. Don't worry, I've setup an alternative route so you can see the breadcrumbs on the home page.
+							<p><a href="/crumbs/example/url#crumbs" class="small radius button">Click Here</a> to go to a URL that will offer breadcrumbs (they don't show up on the without something at the end of your URL. The link above was made by creating a route <code>'/crumbs/example/url' => ''</code> which routes that URL to the index page.
 						</blockquote>
 					</div>
 					
