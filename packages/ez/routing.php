@@ -117,7 +117,6 @@ class route {
 			$model = $base . 'models' . DS . $model . EXT;
 			$view = $base . 'views' . DS;
 			$view .= (self::$_match && $path == '/') ? config::$index : self::$controller;
-/* 				$view = $base . 'views' . DS . ($action == config::$index ? self::$controller : $action); */
 			
 			// Update static path variables
 			self::$base = $base;

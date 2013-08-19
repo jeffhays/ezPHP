@@ -11,7 +11,7 @@ class controller extends \ez\app\DefaultController {
 	}
 	
 	public static function index(){
-		ez::dbug(user::values());
+
 	}
 	
 	public static function after(){

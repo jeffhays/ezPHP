@@ -2,12 +2,10 @@
 namespace ez\core;
 
 class user extends auth {
-	
-	public static $values = false;
 
 	// Require login on current page
 	public static function require_login($url=false){
-		return auth::require_login($url) ? self::$values : false;
+		return auth::require_login($url) ? auth::values() : false;
 	}
 	
 	// Login user, start session, and set user object
@@ -17,9 +15,7 @@ class user extends auth {
 	
 	// Login user end session, and unset user object
 	public static function logout($redirect=false){
-		// Logout
 		auth::logout();
-		// Redirect
 		if($redirect) header("Location: $redirect");
 	}
 	

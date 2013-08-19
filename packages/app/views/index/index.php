@@ -140,6 +140,7 @@
 			<div class="panel">
 				<h3 class="subheader">Updates:</h3>
 				<ul>
+					<li>Implemented user class to handle sessions and allow central location for user data</li>
 					<li>Added <code>autoload::libs()</code> function to automatically load libraries from the folder you pass it</li>
 					<li>Added <code>html::breadcrumbs()</code> function that will echo out Foundation breadcrumbs based on the current URL</li>
 					<li>Added <code>route::url()</code> function to handle all controller/model/view paths in the route class</li>
@@ -153,7 +154,7 @@
 			<div class="panel">
 				<h3 class="subheader">To Do:</h3>
 				<ul>
-					<li>Implement user class for - central location for static user data</li>
+					<li>Move dBug class from libs to core</li>
 				</ul>
 			</div>
 			
