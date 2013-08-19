@@ -18,7 +18,7 @@ class controller extends \ez\app\DefaultController {
 		if(is_array($_POST) && isset($_POST['username']) && isset($_POST['password'])){
 			$user = db::i()->select()->from('ez_users')->where('username', '=', $_POST['username'])->andwhere('password', '=', md5($_POST['password']))->row();
 			$user = user::login($user);
-			if($user) header('Location: /admin/index');
+			if($user) header('Location: /admin/login');
 		}
 	}
 

@@ -6,7 +6,7 @@ class controller extends \ez\app\DefaultController {
 	
 	// Function called before view
 	public static function before(){
-		user::logout('/admin/index');
+		user::logout('/admin/login');
 	}
 	
 	// logout action

@@ -17,9 +17,8 @@ class user extends auth {
 	
 	// Login user end session, and unset user object
 	public static function logout($redirect=false){
-		// Unset user
-		self::$values = false;
-		auth::logout($redirect);
+		// Logout
+		auth::logout();
 		// Redirect
 		if($redirect) header("Location: $redirect");
 	}

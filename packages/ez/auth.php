@@ -25,8 +25,10 @@ class auth {
 			session_save_path(BASE . config::$session_path);
 
 			// Use our custom session handler and start the session
+/*
 			$handler = new session();
 			session_set_save_handler($handler, true);
+*/
 			session_start();
 			self::$_file = BASE . config::$session_path . DS . 'sess_' . session_id();
 		}
@@ -58,18 +60,16 @@ class auth {
 
 	// User logout function
 	public static function logout(){
-		if(self::$_file){
-		  // Unset and destroy session
-		  session_unset();
-			session_destroy();
-			if(file_exists(self::$_file)) die('wtf');
+	  // Unset and destroy session
+	  session_unset();
+		session_destroy();
+		if(file_exists(self::$_file)) die('wtf');
 /* 			unlink(self::$_file); */
-		}
 	}
 
 	// Return logged in status
 	public static function loggedin(){
-		return self::$_file ? true : false;
+		return isset($_SESSION) && isset($_SESSION[self::$_key]) ? true : false;
 	}
 	
 	// Return user value
