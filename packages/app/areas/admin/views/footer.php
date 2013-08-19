@@ -6,10 +6,9 @@
 	</script>
 <?php
 	html::js('jquery.min.js');
-	html::js('jquery-ui-1.10.3.custom.min.js');
 	html::js('vendor/custom.modernizr.js');
 	html::js('foundation.min.js');
-	html::js('doit.js');
+	html::js('ez.js');
 ?>
 	<script>$(document).foundation();</script>
 </body>

@@ -1,9 +1,10 @@
 <?php
 namespace ez\core;
 use PDO;
+
 /*
  *	Jeff Hays' SQL BLDR class
- *	Version 1.1 alpha
+ *	Version 1.1 beta
  */
  
 class db extends PDO {
@@ -503,7 +504,7 @@ class db extends PDO {
 		if(self::$i->table && self::$i->columns) {
 			// Initialize
 			$csv = '';
-			$fname = ($fname && strpos($fname, ".csv") === false) ? $fname . ".csv" : 'output.csv';
+			$fname = ($fname && strpos($fname, '.csv') === false) ? $fname . '.csv' : 'output.csv';
 
 			// Execute current select SQL and set associative array
 			$result = $this->asarray();
@@ -551,7 +552,10 @@ class db extends PDO {
 	public function row($index=false) {
 		if(self::$i->columns && self::$i->table) {
 			$obj = $this->asobject();
-			return $obj[$index ? $index : 0];
+			if(is_array($obj) && count($obj)){
+				return $obj[$index ? $index : 0];
+			}
+			return false;
 		}
 	}
 

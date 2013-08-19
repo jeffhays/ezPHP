@@ -26,9 +26,9 @@ class config {
 	// Database
 	private static $_dbengine = 'mysql';
 	private static $_dbhost = 'localhost';
-	private static $_dbname = 'doit';
-	private static $_dbuser = 'doit';
-	private static $_dbpass = 'doitkthxbye!';
+	private static $_dbname = 'ez';
+	private static $_dbuser = 'ez';
+	private static $_dbpass = 'ez';
 
 	// Error reporting
 	public static $debug = true;
@@ -38,18 +38,15 @@ class config {
 	public static $access_log = 'access.log';
 	
 	// Session settings
-	public static $session_path = '/tmp/sessions';
+	public static $session_path = 'tmp/sessions';
 	public static $cookie_lifetime = '7776000';
+	public static $set_cookie_params = '7776000';
 	public static $gc_maxlifetime = '7776000';
 	public static $use_cookies = 'on';
 	public static $use_only_cookies = 'on';
 	public static $use_trans_sid = 'off';
 	
 	// Site settings functions
-	
-	public static function test(){
-		die('test');
-	}
 	public static function title(){
 		return self::$site_title;
 	}

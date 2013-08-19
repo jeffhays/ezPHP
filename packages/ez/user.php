@@ -3,20 +3,40 @@ namespace ez\core;
 
 class user extends auth {
 	
-	public static $id;
-	public static $user;
-	public static $name;
-	public static $level;
+	public static $values = false;
 
-	// Function aliases
-	public static function require_login(){
-		parent::require_login();
+	// Require login on current page
+	public static function require_login($url=false){
+		return auth::require_login($url) ? self::$values : false;
 	}
-	public static function login(){
-		parent::login();
+	
+	// Login user, start session, and set user object
+	public static function login($values=false){
+		return auth::login($values) ? true : false;
 	}
-	public static function logout(){
-		parent::logout();
+	
+	// Login user end session, and unset user object
+	public static function logout($redirect=false){
+		// Unset user
+		self::$values = false;
+		auth::logout($redirect);
+		// Redirect
+		if($redirect) header("Location: $redirect");
+	}
+	
+	// Return logged in status
+	public static function loggedin(){
+		return auth::loggedin();
+	}
+	
+	// Get user value
+	public static function val($key){
+		return auth::val($key);
+	}
+	
+	// Return user values
+	public static function values(){
+		return auth::values();
 	}
 	
 }

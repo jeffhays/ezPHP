@@ -9,17 +9,17 @@ use ez\core\autoloader as autoload;
 use ez\config as config;
 
 // Define path constants
-defined('DS') or define('DS', DIRECTORY_SEPARATOR);
-defined('EXT') or define('EXT', '.php');
-defined('BASE') or define('BASE', dirname(dirname(__FILE__)) . DS);
-defined('CONFIG') or define('CONFIG', BASE . 'config' . DS);
-defined('PKG') or define('PKG', BASE . 'packages' . DS);
-defined('TMP') or define('TMP', BASE . 'tmp' . DS);
-defined('LIB') or define('LIB', PKG . 'lib' . DS);
-defined('APP') or define('APP', PKG . 'app' . DS);
-defined('CORE') or define('CORE', PKG . 'ez' . DS);
-defined('SESS') or define('SESS', TMP . 'sessions' . DS);
-defined('LOG') or define('LOG', TMP . 'logs' . DS);
+defined('DS') || define('DS', DIRECTORY_SEPARATOR);
+defined('EXT') || define('EXT', '.php');
+defined('BASE') || define('BASE', dirname(dirname(__FILE__)) . DS);
+defined('CONFIG') || define('CONFIG', BASE . 'config' . DS);
+defined('PKG') || define('PKG', BASE . 'packages' . DS);
+defined('TMP') || define('TMP', BASE . 'tmp' . DS);
+defined('LIB') || define('LIB', PKG . 'lib' . DS);
+defined('APP') || define('APP', PKG . 'app' . DS);
+defined('CORE') || define('CORE', PKG . 'ez' . DS);
+defined('SESS') || define('SESS', TMP . 'sessions' . DS);
+defined('LOG') || define('LOG', TMP . 'logs' . DS);
 
 /* require_once(dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php'); */
 
@@ -60,7 +60,9 @@ if(!function_exists('bootstrap_autoloader')){
 		
 		// Load classes - usage: array(namespace\class => path/to/class.php)
 		autoload::add_classes(array(
+			'ez\core\session' => CORE . 'session.php',
 			'ez\core\auth' => CORE . 'auth.php',
+			'ez\core\user' => CORE . 'user.php',
 			'ez\core\route' => CORE . 'routing.php',
 			'ez\core\db' => CORE . 'db.php',
 			'ez\core\ez' => CORE . 'ez.php',
@@ -76,6 +78,7 @@ if(!function_exists('bootstrap_autoloader')){
 			'ez\config' => 'config',
 			'ez\routing' => 'routing',
 			'ez\core\auth' => 'auth',
+			'ez\core\user' => 'user',
 			'ez\core\autoloader' => 'autoload',
 			'ez\core\db' => 'db',
 			'ez\core\ez' => 'ez',
@@ -84,9 +87,12 @@ if(!function_exists('bootstrap_autoloader')){
 			'ez\core\view' => 'view'
 		));
 
+		// Start session if needed
+		auth::init();
+
 		// Initialize database connection
 		db::init(config::dbhost(), config::dbname(), config::dbuser(), config::dbpass());
-
+		
 		// Add routing from config/routing.php
 		route::add(routing::routes());
 

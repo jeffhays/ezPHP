@@ -1,21 +1,22 @@
 <?php
 namespace ez\app;
-use ez\core\ez as ez;
-use ez\core\view as view;
 use ez\core\user as user;
 
 class controller extends \ez\app\DefaultController {
 	
+	// Function called before view
 	public static function before(){
-		user::require_login();
+		user::logout('/admin/index');
 	}
 	
-	public static function index(){
-		ez::dbug(user::values());
+	// logout action
+	public static function logout(){
+		
 	}
-	
+
+	// Function called after view
 	public static function after(){
 
 	}
-	
+
 }

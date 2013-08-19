@@ -6,7 +6,7 @@
 				<div class="large-12 columns">
 					<div class="panel callout" id="start1">
 						<p>The <?php echo config::name(); ?> is an open source object-oriented HMVC framework written in PHP. The core of the project was mostly developed in 3 days by Jeff Hays as a way of learning namespaces and routing from scratch. It's light weight, easy-to-use, and was programmed specifically to make it easy to use for developers. This is accomplished by autoloading classes and providing as many sensible aliases and syntax options as possible.</p>
-					</div>
+					</div><a name="usage"></a>
 
 					<h3 class="subheader">Model, View, and Controller</h3>
 					<p>The routing is dispatched to load the appropriate controller, model, and the files in the view: <em>header.php</em>, <em>nav.php</em>, <em>index.php</em>, and <em>footer.php</em>. These template partials are of course loaded from the views folder that matches the action name (or the one you routed to a non-default location). Since <?php echo config::name(); ?> is Hierarchical, it will also grab each of those same files from the parent folder if any of them are missing from that view folder</p>
@@ -64,7 +64,7 @@
 							<p><em>Output:</em></p>
 							<p><?php html::breadcrumbs(); ?></p>
 							<a href="/crumbs/example/url#crumbs" class="small radius button">Click Here</a>
-							<p>... to go to a URL that will offer breadcrumbs (they don't show up on the without something at the end of your URL. The link above was made by creating a few routes:
+							<p>... to go to a URL that will offer breadcrumbs (they don't show up on the home page since there's nothing at the end of your URL. The link above was made by creating a few routes:
 								<p class="text-center"><code>'/crumbs/example/url' => '',<br>'/crumbs/example' => '',<br>'/crumbs' => ''</code></p>
 								These route each of the parts of URL to the index page while showing you the appropriate order to put your routes in. Putting the child-most directories first is required for since the routing will find the first match in the list.</p>
 						</blockquote>

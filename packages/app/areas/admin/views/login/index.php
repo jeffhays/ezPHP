@@ -10,7 +10,7 @@
           <span class="prefix"><i class="icon-user"></i></span>
         </div>
         <div class="small-10 large-11 columns">
-          <input type="text" name="user" id="user" placeholder="username">
+          <input type="text" name="username" id="user" placeholder="username">
         </div>
       </div>
       <div class="row collapse">

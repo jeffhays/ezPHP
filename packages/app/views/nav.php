@@ -3,7 +3,7 @@
 			<ul class="title-area">
 				<!-- Title Area -->
 				<li class="name">
-					<h1><a href="/"><?php echo config::name(); ?></a></h1>
+					<h1><a href="/"><i class="icon-info-sign"></i> About <?php echo config::name(); ?></a></h1>
 				</li>
 				<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -12,10 +12,6 @@
 			<section class="top-bar-section">
 				<!-- Left Nav Section -->
 				<ul class="left">
-					<li class="divider"></li>
-					<li class="active"><a href="/"><i class="icon-info-sign"></i> About</a></li>
-					<li class="divider"></li>
-					<li><a href="/#routing"><i class="icon-sort-by-attributes-alt"></i> Routing</a></li>
 					<li class="divider"></li>
 					<li class="has-dropdown"><a href="/#usage"><i class="icon-code"></i> Usage</a>
 						<ul class="dropdown">
@@ -27,7 +23,7 @@
 						</ul>
 					</li>
 					<li class="divider"></li>
-<?php if(isset($_SESSION['loggedin'])) { ?>
+<?php if(user::loggedin()){ ?>
 					<li class="has-dropdown"><a href="#">Main Item 3</a>
 					
 					  <ul class="dropdown">
@@ -66,17 +62,15 @@
 				
 				<!-- Right Nav Section -->
 				<ul class="right">
+				<?php if(user::loggedin()){ ?>
 					<li class="divider hide-for-small"></li>
-					<li><a href="/#pricing"><i class="icon-money"></i> Pricing</a></li>
-					<li class="divider hide-for-small"></li>
-<!--
-					<li>Requests</li>
+					<li><a href="/admin"><i class="icon-cog icon-spin"></i> Admin</a></li>
+				<?php } ?>
 					<li class="divider"></li>
--->
 					<li class="has-form">
-						<?php if(isset($_SESSION['loggedin'])) { ?>
-							<div style="float:left;color:#fff;margin:.6em 1em .6em 0;">Welcome <?php echo $_SESSION['username']; ?>!</div>
-							<form style="float:right" action="/logout" method="post">
+						<?php if(user::loggedin()){ ?>
+							<div style="float:left;color:#fff;margin:.6em 1em .6em 0;">Welcome <?php echo user::val('username'); ?>!</div>
+							<form style="float:right" action="/admin/logout" method="post">
 								<button class="small orange radius button" type="submit"><i class="icon-eject"></i> Logout</button>
 							</form>
 						<?php } else { ?>
