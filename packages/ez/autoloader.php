@@ -50,6 +50,30 @@ class autoloader {
 		}
 		return false;
 	}
+	
+	// Function that takes an array and strips out all files/directories that don't contain the PHP extension from the config
+	public static function libfiles($input){
+		if(is_array($input) && count($input)){
+			foreach($input as $k=>$i){
+				if(!strstr($i, EXT)) unset($input[$k]);
+			}
+			return $input;
+		}
+		return false;
+	}
+	
+	// Automatically include files from $path containing PHP extension from the config
+	public static function libs($path){
+		$files = scandir($path);
+		$files = self::libfiles($files);
+		if(is_array($files) && count($files)){
+			foreach($files as $file){
+				require_once($path . $file);
+			}
+			return true;
+		}
+		return false;
+	}
 
 	// Return current classes
 	public static function get_classes(){

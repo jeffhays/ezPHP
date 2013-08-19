@@ -33,6 +33,9 @@ if(!function_exists('bootstrap_autoloader')){
 		require_once(CORE . 'autoloader.php');
 		autoload::set_include_path(PKG);
 		
+		// Automatically load files in LIB that contain EXT in the filename
+		autoload::libs(LIB);
+		
 		// Load and register configs first for error reporting
 		autoload::add_classes(array(
 			'ez\config' => CONFIG . 'config.php',
@@ -57,7 +60,6 @@ if(!function_exists('bootstrap_autoloader')){
 		
 		// Load classes - usage: array(namespace\class => path/to/class.php)
 		autoload::add_classes(array(
-			'ez\lib\dBug' => LIB . 'dbug.php',
 			'ez\core\auth' => CORE . 'auth.php',
 			'ez\core\route' => CORE . 'routing.php',
 			'ez\core\db' => CORE . 'db.php',
@@ -71,7 +73,6 @@ if(!function_exists('bootstrap_autoloader')){
 		
 		// Setup global namespace aliases - usage: array(namespace\class => alias)
 		alias(array(
-			'ez\lib\dBug' => 'dbug',
 			'ez\config' => 'config',
 			'ez\routing' => 'routing',
 			'ez\core\auth' => 'auth',

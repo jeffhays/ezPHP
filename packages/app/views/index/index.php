@@ -63,7 +63,10 @@
 							<p class="text-center"><code>html::breadcrumbs();</code></p>
 							<p><em>Output:</em></p>
 							<p><?php html::breadcrumbs(); ?></p>
-							<p><a href="/crumbs/example/url#crumbs" class="small radius button">Click Here</a> to go to a URL that will offer breadcrumbs (they don't show up on the without something at the end of your URL. The link above was made by creating a route <code>'/crumbs/example/url' => ''</code> which routes that URL to the index page.
+							<a href="/crumbs/example/url#crumbs" class="small radius button">Click Here</a>
+							<p>... to go to a URL that will offer breadcrumbs (they don't show up on the without something at the end of your URL. The link above was made by creating a few routes:
+								<p class="text-center"><code>'/crumbs/example/url' => '',<br>'/crumbs/example' => '',<br>'/crumbs' => ''</code></p>
+								These route each of the parts of URL to the index page while showing you the appropriate order to put your routes in. Putting the child-most directories first is required for since the routing will find the first match in the list.</p>
 						</blockquote>
 					</div>
 					
@@ -137,6 +140,7 @@
 			<div class="panel">
 				<h3 class="subheader">Updates:</h3>
 				<ul>
+					<li>Added <code>autoload::libs()</code> function to automatically load libraries from the folder you pass it</li>
 					<li>Added <code>html::breadcrumbs()</code> function that will echo out Foundation breadcrumbs based on the current URL</li>
 					<li>Added <code>route::url()</code> function to handle all controller/model/view paths in the route class</li>
 					<li>Recently implemented an admin login page and started the auth class that will handle sessions and user data</li>
@@ -150,7 +154,6 @@
 				<h3 class="subheader">To Do:</h3>
 				<ul>
 					<li>Implement user class for - central location for static user data</li>
-					<li>Add autoload routine for lib folder (and remove from public/index.php)</li>
 				</ul>
 			</div>
 			
