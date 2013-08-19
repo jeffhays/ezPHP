@@ -25,10 +25,8 @@ class auth {
 			session_save_path(BASE . config::$session_path);
 
 			// Use our custom session handler and start the session
-/*
 			$handler = new session();
 			session_set_save_handler($handler, true);
-*/
 			session_start();
 			self::$_file = BASE . config::$session_path . DS . 'sess_' . session_id();
 		}
