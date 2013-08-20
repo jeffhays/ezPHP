@@ -12,6 +12,13 @@
 /* Utility classes */
 
 /* Content */
+	body {
+		background: url(/img/ezphpbg.png) 99% 84% no-repeat fixed;
+	}
+	.content {
+		padding: 1em;
+		min-height: 37.8em;
+	}
 	.panel h4 em {
 		color: #666666;
 		font-weight: 200;

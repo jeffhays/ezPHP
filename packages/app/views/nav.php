@@ -3,7 +3,7 @@
 			<ul class="title-area">
 				<!-- Title Area -->
 				<li class="name">
-					<h1><a href="/"><i class="icon-info-sign"></i> About <img src="/img/topbarlogo.png" alt="<?php echo config::name(); ?>" title="<?php echo config::name(); ?>"> Framework</a></h1>
+					<h1><a href="/">About <img src="/img/topbarlogo.png" alt="<?php echo config::name(); ?>" title="<?php echo config::name(); ?>"> Framework</a></h1>
 				</li>
 				<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -23,7 +23,7 @@
 						</ul>
 					</li>
 					<li class="divider"></li>
-<?php if(user::loggedin()){ ?>
+	<?php if(user::loggedin()){ ?>
 					<li class="has-dropdown"><a href="#">Main Item 3</a>
 					
 					  <ul class="dropdown">
@@ -57,7 +57,7 @@
 					  </ul>
 					</li>
 					<li class="divider"></li>
-<?php } ?>
+	<?php } ?>
 				</ul>
 				
 				<!-- Right Nav Section -->
@@ -74,7 +74,7 @@
 								<button class="small orange radius button" type="submit"><i class="icon-eject"></i> Logout</button>
 							</form>
 						<?php } else { ?>
-<a class="small radius button" href="/admin/login"><i class="icon-key"></i> Login</a>
+	<a class="small radius button" href="/admin/login"><i class="icon-key"></i> Login</a>
 						<?php } ?>
 					</li>
 				</ul>
