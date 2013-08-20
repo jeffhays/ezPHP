@@ -12,5 +12,6 @@
 	html::css('jquery-ui-1.10.3.custom.min.css');
 	html::css('ez.css');
 ?>
+	<link href="/img/favicon.png" rel="icon" type="image/png">
 </head>
 <body>

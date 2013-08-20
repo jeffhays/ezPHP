@@ -3,7 +3,7 @@
 			<ul class="title-area">
 				<!-- Title Area -->
 				<li class="name">
-					<h1><a href="/"><i class="icon-info-sign"></i> About <?php echo config::name(); ?></a></h1>
+					<h1><a href="/"><i class="icon-info-sign"></i> About <img src="/img/topbarlogo.png" alt="<?php echo config::name(); ?>" title="<?php echo config::name(); ?>"> Framework</a></h1>
 				</li>
 				<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
