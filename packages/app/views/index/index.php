@@ -18,7 +18,7 @@
 			<div class="panel">
 				<h3 class="subheader">Recent Updates:</h3>
 				<ul>
-					<li>Implemented user class to handle sessions and allow central location for user data. You can pass the user class an array or object of data and it will automatically be handled through the session handler.</li>
+					<li>Implemented <a href="/usage/#user" alt="<?php echo config::name(); ?> User Class" title="<?php echo config::name(); ?> User Class">User Class</a> to handle sessions and allow central location for user data. You can pass the user class an array or object of data and it will automatically be handled through the session handler.</li>
 					<li>Added <code>autoload::libs()</code> function to automatically load libraries from the folder you pass it</li>
 					<li>Recently implemented an admin login page and started the auth class that will handles sessions.</li>
 					<li>Added <code>html::breadcrumbs()</code> function that outputs Foundation breadcrumbs based on the current URL.</li>

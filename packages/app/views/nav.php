@@ -16,13 +16,15 @@
 					<li class="has-dropdown"><a href="/usage"><i class="icon-code"></i> Usage</a>
 						<ul class="dropdown">
 							<li class="divider"></li>
+							<li><a href="/usage/#info"><i class="icon-info-sign"></i> Info</a></li>
+							<li class="divider"></li>
 							<li><a href="/usage/#routing"><i class="icon-sort-by-attributes-alt"></i> Routing</a></li>
 							<li class="divider"></li>
 							<li><a href="/usage/#templating"><i class="icon-html5"></i> Templating</a></li>
 							<li class="divider"></li>
 						</ul>
 					</li>
-					<li class="divider"></li>
+					<li class="divider hide-for-small"></li>
 	<?php if(user::loggedin()){ ?>
 					<li class="has-dropdown"><a href="#">Main Item 3</a>
 					

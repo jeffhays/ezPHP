@@ -1,12 +1,16 @@
 
 	<div class="row usage">
-		<div class="large-3 columns tableofcontents">
+		<div class="large-4 columns tableofcontents">
+			<a name="info"></a>
 			<h3>Table of Contents</h3>
-			<ol class="large-6 columns">
-				<li><a href="#routing">Routing</a></li>
-				<li><a href="#templating">Templating</a></li>
-				<li><a href="#user">User Class</a></li>
-			</ol>
+			<div class="row">
+				<ol class="large-8 columns">
+					<li><a href="#routing">Routing</a></li>
+					<li><a href="#templating">Templating</a></li>
+					<li><a href="#user">User Class</a></li>
+					<li><a href="#ez">ez Class</a></li>
+				</ol>
+			</div>
 		</div>
 		<div class="large-8 columns">
 			<h3><?php echo config::name(); ?> Usage</h3>
@@ -146,6 +150,19 @@
 					<p><em>Result:</em></p>
 					<p>Returns the 'username' value of the user array. Remember, the user values are set from the values you pass to the User Class when you call <code>user::login($values);</code></p>
 				</blockquote>
+			</div>
+			<h3 class="subheader"><a name="ez" alt="<?php echo config::title(); ?> ez Class" title="<?php echo config::title(); ?> ez Class">ez Class</a></h3>
+			<div class="panel">
+				<h4>ez::dbug(<em>$mixed</em>);</h4>
+				<blockquote>
+					<p><em>Info:</em></p>
+					<p>This is by far one of my favorite parts of <?php echo config::name(); ?> is the integration of one of my old favorite debugger classes "dBug" by Kwaku Otchere. It's a simple one-file solution to spit out the contents of all types of data to avoid having to echo pre tags and such. It also has old school JS to collapse and toggle different parts of the output. I plan to eventually write my own but this one is an old past time of mine.
+					<p><em>Examples:</em></p>
+					<p class="text-center"><code>ez::dbug(array('user' => array('ID' => 2, 'name' => 'billy'), 'ip' => '<?php echo $_SERVER['REMOTE_ADDR']; ?>'));</code></p>
+					<p><em>Result:</em></p>
+					<p><?php ez::dbug(array('user' => array('ID' => 2, 'name' => 'billy'), 'ip' => $_SERVER['REMOTE_ADDR'])); ?></p>
+				</blockquote>
+				<hr>				
 			</div>
 			
 		</div>
