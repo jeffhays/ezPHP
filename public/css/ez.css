@@ -11,33 +11,6 @@
 	}
 /* Utility classes */
 
-/* Content */
-	body {
-		background: url(/img/ezphpbg.png) 99% 84% no-repeat fixed;
-	}
-	.content {
-		padding: 1em;
-		min-height: 37.8em;
-	}
-	.panel h4 em {
-		color: #666666;
-		font-weight: 200;
-	}
-	.panel h4 em span {
-		color: #aaaaaa;
-	}
-	footer.main {
-		display: block;
-		width: 100%;
-		height: 2em;
-		clear: both;
-		padding: 1em 1em 4em;
-		color: #ffffff;
-		background: #526a92;
-		border-top-color: #405271;
-	}	
-/* Content */
-
 /* Foundation Add-ons */
 	.row {
 		max-width: 90%;
@@ -60,6 +33,49 @@
 		border: 1px solid #eb7338;
 	}
 /* Foundation Add-ons */
+
+/* Content */
+	body {
+		background: url(/img/ezphpbg.png) 1% 84% no-repeat fixed;
+	}
+	.title-area .name h1 span {
+		position: absolute;
+		color: #fff;
+		font-size: 5em;
+		top: -.12em;
+		left: 0;
+	}
+	.title-area .name h1 {
+		padding-left: 4.5em;
+	}
+	.content {
+		padding: 1em;
+		min-height: 37.8em;
+	}
+	.usage {
+		max-width: 100%;
+	}
+	.tableofcontents ol {
+		margin: 0 1em;
+	}
+	.panel h4 em {
+		color: #666666;
+		font-weight: 200;
+	}
+	.panel h4 em span {
+		color: #aaa;
+	}
+	footer.main {
+		display: block;
+		width: 100%;
+		height: 2em;
+		clear: both;
+		padding: 1em 1em 4em;
+		color: #fff;
+		background: #526a92;
+		border-top-color: #405271;
+	}	
+/* Content */
 
 /* Font Awesome Add-ons */
 	.medium-icon {

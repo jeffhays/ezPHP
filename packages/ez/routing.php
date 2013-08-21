@@ -21,6 +21,7 @@ class route {
 	
 	// Private variables
 	private static $_match = false;
+	private static $_params = false;
 
 	// Add routes
 	public static function add($routes){

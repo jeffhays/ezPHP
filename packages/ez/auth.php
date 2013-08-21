@@ -37,7 +37,7 @@ class auth {
   // Require login on the page this is called on. Will forward to the $login_url from the config if not logged in.
   public static function require_login($url=false){
     // If the user isn't logged in and the current URL isn't the login url, forward them to login page
-    if(!self::$_file && !strstr($_SERVER['REQUEST_URI'], config::$login_url)){
+    if(!isset($_SESSION[self::$_key]) && !strstr($_SERVER['REQUEST_URI'], config::$login_url)){
       header('Location: ' . ($url ? $url : config::$login_url));
       return false;
     }

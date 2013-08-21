@@ -3,7 +3,7 @@
 			<ul class="title-area">
 				<!-- Title Area -->
 				<li class="name">
-					<h1><a href="/">About <img src="/img/topbarlogo.png" alt="<?php echo config::name(); ?>" title="<?php echo config::name(); ?>"> Framework</a></h1>
+					<h1><a href="/" alt="<?php echo config::name(); ?>" title="<?php echo config::name(); ?>"><span>ez</span>PHP Framework</a></h1>
 				</li>
 				<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -13,12 +13,12 @@
 				<!-- Left Nav Section -->
 				<ul class="left">
 					<li class="divider"></li>
-					<li class="has-dropdown"><a href="/#usage"><i class="icon-code"></i> Usage</a>
+					<li class="has-dropdown"><a href="/usage"><i class="icon-code"></i> Usage</a>
 						<ul class="dropdown">
 							<li class="divider"></li>
-							<li><a href="/#routing"><i class="icon-sort-by-attributes-alt"></i> Routing</a></li>
+							<li><a href="/usage/#routing"><i class="icon-sort-by-attributes-alt"></i> Routing</a></li>
 							<li class="divider"></li>
-							<li><a href="/#templating"><i class="icon-html5"></i> Templating</a></li>
+							<li><a href="/usage/#templating"><i class="icon-html5"></i> Templating</a></li>
 							<li class="divider"></li>
 						</ul>
 					</li>
