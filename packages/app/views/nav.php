@@ -22,6 +22,8 @@
 							<li class="divider"></li>
 							<li><a href="/usage/#templating"><i class="icon-html5"></i> Templating</a></li>
 							<li class="divider"></li>
+							<li><a href="/usage/#ez"><i class="icon-archive"></i> ez Class</a></li>
+							<li class="divider"></li>
 						</ul>
 					</li>
 					<li class="divider hide-for-small"></li>
