@@ -78,7 +78,7 @@
 								<button class="small orange radius button" type="submit"><i class="icon-eject"></i> Logout</button>
 							</form>
 						<?php } else { ?>
-	<a class="small radius button" href="/admin/login"><i class="icon-key"></i> Login</a>
+	<a class="small radius button" href="/admin/login"><i class="icon-unlock-alt"></i> Login</a>
 						<?php } ?>
 					</li>
 				</ul>
