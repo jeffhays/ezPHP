@@ -3,7 +3,7 @@ namespace ez\core;
 use PDO;
 
 /*
- *	Jeff Hays' SQL BLDR class
+ *	ezPHP SQL BLDR class
  *	Version 1.1 beta
  */
  

@@ -13,7 +13,7 @@
 				<!-- Left Nav Section -->
 				<ul class="left">
 					<li class="divider"></li>
-					<li class="has-dropdown"><a href="/usage"><i class="icon-code"></i> Usage</a>
+					<li class="has-dropdown"><a href="/usage/"><i class="icon-code"></i> Usage</a>
 						<ul class="dropdown">
 							<li class="divider"></li>
 							<li><a href="/usage/#info"><i class="icon-info-sign"></i> Info</a></li>

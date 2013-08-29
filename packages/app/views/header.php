@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title><?php echo config::title(); ?></title>
+	<meta name="description" content="<?php echo config::description(); ?>">
 <?php
 	html::css('normalize.css');
 	html::css('font-awesome.min.css');

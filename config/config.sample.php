@@ -9,6 +9,7 @@ class config {
 
 	// Site settings
 	public static $site_title = 'ezPHP Framework | A simple HMVC framework with easy routing';
+	public static $site_description = "The ezPHP Framework is a very lightweight, open source, object-oriented HMVC framework written in PHP using namespaces. Easy routing, simple syntax, failovers, and aliases galore make this framework a breeze for novice or advanced developers.";
 	public static $site_name = 'ezPHP Framework';
 	public static $site_url = 'http://localhost/';
 	public static $site_version = '.1 alpha';
@@ -49,6 +50,9 @@ class config {
 	// Site settings functions
 	public static function title(){
 		return self::$site_title;
+	}
+	public static function description(){
+		return self::$site_description;
 	}
 	public static function name(){
 		return self::$site_name;
