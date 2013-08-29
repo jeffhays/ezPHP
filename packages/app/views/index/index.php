@@ -20,13 +20,13 @@
 				<ul>
 					<li>Added a site_description setting to config, and <code>config::description();</code> for use in the meta tags.</li>
 					<li>w00t! Finally finished the pieces of the routing that were missing, including but not limited to: infinite parameters can now be passed in the controller function that is called, fail overs have been added to fix all the issues between routed URLs and non-routed URLs, and general pimpification of routing functions. I also added a <a href="/admin/users/edit/10">users view in the admin</a> to provide an example of how URL variables are passed.</li>
-					<li>Added <a href="/usage#favicon"><code>html::favicon()</code></a> function that outputs a HTML5 favicon link tag.</li>
+					<li>Added <a href="/usage/#favicon"><code>html::favicon()</code></a> function that outputs a HTML5 favicon link tag.</li>
 					<li>Implemented <a href="/usage/#user" alt="<?php echo config::name(); ?> User Class" title="<?php echo config::name(); ?> User Class">User Class</a> to handle sessions and allow central location for user data. You can pass the user class an array or object of data and it will automatically be handled through the session handler.</li>
-					<li>Added <a href="/usage#libs"><code>autoload::libs()</code></a> function to automatically load libraries from the folder you pass it</li>
+					<li>Added <a href="/usage/#libs"><code>autoload::libs()</code></a> function to automatically load libraries from the folder you pass it</li>
 					<li>Recently implemented an admin login page and started the auth class that will handles sessions.</li>
-					<li>Added <a href="/usage#crumbs"><code>html::breadcrumbs()</code></a> function that outputs Foundation breadcrumbs based on the current URL.</li>
+					<li>Added <a href="/usage/#crumbs"><code>html::breadcrumbs()</code></a> function that outputs Foundation breadcrumbs based on the current URL.</li>
 					<li>Put in an adorable <a href="/pricing">example pricing page</a> that showcases using 1 single view file as opposed to a folder.</li>
-					<li>Added <a href="/usage#routeurl"><code>route::url()</code></a> function to handle all controller/model/view paths in the route class.</li>
+					<li>Added <a href="/usage/#routeurl"><code>route::url()</code></a> function to handle all controller/model/view paths in the route class.</li>
 				</ul>
 			</div>
 

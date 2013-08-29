@@ -16,7 +16,7 @@
 		      </div>
 		      <div class="row collapse">
 		        <div class="small-2 large-1 columns">
-		          <span class="prefix"><i class="icon-key"></i></span>
+		          <span class="prefix"><i class="icon-asterisk"></i></span>
 		        </div>
 		        <div class="small-10 large-11 columns">
 		          <input type="password" name="password" id="password" placeholder="password">
