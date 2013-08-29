@@ -2,13 +2,14 @@
 	<div class="row usage">
 		<div class="large-3 columns tableofcontents">
 			<a name="info"></a>
-			<h3>Table of Contents</h3>
+			<h3>Function Reference</h3>
 			<div class="row">
 				<ol class="large-8 columns">
 					<li><a href="#routing">Routing</a></li>
 					<li><a href="#templating">Templating</a></li>
-					<li><a href="#user">User Class</a></li>
-					<li><a href="#ez">ez Class</a></li>
+					<li><a href="#user">user class</a></li>
+					<li><a href="#ez">ez class</a></li>
+					<li><a href="#autoload">autoload class</a></li>
 				</ol>
 			</div>
 		</div>
@@ -171,11 +172,54 @@
 				<h4>ez::dbug(<em>$mixed</em>);</h4>
 				<blockquote>
 					<p><em>Info:</em></p>
-					<p>This is by far one of my favorite parts of <?php echo config::name(); ?> is the integration of one of my old favorite debugger classes "dBug" by Kwaku Otchere. It's a simple one-file solution to spit out the contents of all types of data to avoid having to echo pre tags and such. It also has old school JS to collapse and toggle different parts of the output. I plan to eventually write my own but this one is an old past time of mine.
-					<p><em>Examples:</em></p>
+					<p>This is by far one of my favorite parts of <?php echo config::name(); ?> is the integration of one of my old favorite debugger classes "dBug" by Kwaku Otchere. It's a simple one-file solution to spit out the contents of all types of data to avoid having to echo pre tags and such. It also has old school JS to collapse and toggle different parts of the output. I plan to eventually write my own but this one is an old past time of mine.</p>
+					<p><em>Example:</em></p>
 					<p class="text-center"><code>ez::dbug(array('user' => array('ID' => 2, 'name' => 'billy'), 'ip' => '<?php echo $_SERVER['REMOTE_ADDR']; ?>'));</code></p>
-					<p><em>Result:</em></p>
+					<p><em>Output:</em></p>
 					<p><?php ez::dbug(array('user' => array('ID' => 2, 'name' => 'billy'), 'ip' => $_SERVER['REMOTE_ADDR'])); ?></p>
+				</blockquote>
+				<hr>				
+			</div>
+			<h3 class="subheader"><a name="autoload" alt="<?php echo config::title(); ?> autoload Class" title="<?php echo config::title(); ?> autoload Class">autoload Class</a></h3>
+			<div class="panel">
+				<h4>autoload::libs(<em>'path/to/libs/directory'</em>);</h4>
+				<blockquote>
+					<p><em>Info:</em></p>
+					<p>This function will automatically load PHP files from the directory passed to it. I use this same method in the public/index.php file so our lib directory is loaded by using <code>autoload::libs(LIB);</code></p>
+					<p><em>Example:</em></p>
+					<p class="text-center"><code>autoload::libs(PKG . 'my_addon');</code></p>
+					<p><em>Result:</em></p>
+					<p>Loads all .php files from packages/my_addon. You'll need to review the list of constants when including files to make your function calls easy.</p>
+				</blockquote>
+				<hr>				
+				<h4>autoload::add_classes(<em>array('namespace\classname' => 'path/to/file.php')</em>);</h4>
+				<blockquote>
+					<p><em>Info:</em></p>
+					<p>Adds classes to automatically load by passing a keyed array of classes and file paths. This only loads classes in an array which can then be loaded using the <code>autoload::register();</code> function.</p>
+					<p><em>Example:</em></p>
+					<p class="text-center"><code>autoload::add_classes(array(<br>'ez\myconf' => CONFIG . 'myconfig.php',<br>'ez\core\addon' => PKG . 'addon' . DS . 'main.php'<br>));</code></p>
+					<p><em>Result:</em></p>
+					<p>Loads two PHP classes:
+						<ol class="push-1">
+							<li>loads class "myconf" into namespace "ez" from file "config/myconfig.php".</li>
+							<li>loads class "addon" into namespace "ez\core" from file "packages/addon/main.php".</li>
+						</ol>
+					</p>
+				</blockquote>
+				<hr>				
+				<h4>autoload::add_class(<em>'namespace\classname', 'path/to/file.php'</em>);</h4>
+				<blockquote>
+					<p><em>Info:</em></p>
+					<p>Adds a class to automatically load into a namespace. This only loads a class in an array which can then be loaded using the <code>autoload::register();</code> function.</p>
+					<p><em>Example:</em></p>
+					<p class="text-center"><code>autoload::add_class('ez\core\cookies', PKG . 'myaddon' . DS . 'cookies.php');</code></p>
+					<p><em>Result:</em></p>
+					<p>
+						<ol class="push-1">
+							<li>loads class "cookies" into namespace "ez\core" from file "packges/myaddon/cookies.php".</li>
+						</ol>
+						<p class="push-1">(This would be a good example to extend the ez core for your own cookie handler)</p>
+					</p>
 				</blockquote>
 				<hr>				
 			</div>

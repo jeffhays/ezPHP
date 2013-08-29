@@ -1,7 +1,6 @@
 <?php
 /*
- *	Jeff Hays' ez HMVC framework
- *	Version .1 alpha
+ *	ezPHP HMVC framework by	Jeff Hays
  */
 
 // Namespace aliases

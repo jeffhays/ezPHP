@@ -49,7 +49,6 @@
 				<h3 class="subheader">To Do:</h3>
 				<ul>
 					<li>Move dBug class from libs to core</li>
-					<li>Add action parameters in view class</li>
 				</ul>
 			</div>
 			
