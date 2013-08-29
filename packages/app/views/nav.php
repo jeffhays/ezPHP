@@ -26,7 +26,7 @@
 							<li class="divider"></li>
 						</ul>
 					</li>
-					<li class="divider hide-for-small"></li>
+					<li class="divider<?php if(!user::loggedin()){ ?> hide-for-small<?php } ?>"></li>
 	<?php if(user::loggedin()){ ?>
 					<li class="has-dropdown"><a href="#">Main Item 3</a>
 					

@@ -18,12 +18,13 @@
 			<div class="panel">
 				<h3 class="subheader">Recent Updates:</h3>
 				<ul>
+					<li>Added <a href="/usage#favicon"><code>html::favicon()</code></a> function that outputs a HTML5 favicon link tag.</li>
 					<li>Implemented <a href="/usage/#user" alt="<?php echo config::name(); ?> User Class" title="<?php echo config::name(); ?> User Class">User Class</a> to handle sessions and allow central location for user data. You can pass the user class an array or object of data and it will automatically be handled through the session handler.</li>
-					<li>Added <code>autoload::libs()</code> function to automatically load libraries from the folder you pass it</li>
+					<li>Added <a href="/usage#libs"><code>autoload::libs()</code></a> function to automatically load libraries from the folder you pass it</li>
 					<li>Recently implemented an admin login page and started the auth class that will handles sessions.</li>
-					<li>Added <code>html::breadcrumbs()</code> function that outputs Foundation breadcrumbs based on the current URL.</li>
+					<li>Added <a href="/usage#crumbs"><code>html::breadcrumbs()</code></a> function that outputs Foundation breadcrumbs based on the current URL.</li>
 					<li>Put in an adorable <a href="/pricing">example pricing page</a> that showcases using 1 single view file as opposed to a folder.</li>
-					<li>Added <code>route::url()</code> function to handle all controller/model/view paths in the route class.</li>
+					<li>Added <a href="/usage#routeurl"><code>route::url()</code></a> function to handle all controller/model/view paths in the route class.</li>
 				</ul>
 			</div>
 

@@ -1,6 +1,6 @@
 
 	<div class="row usage">
-		<div class="large-4 columns tableofcontents">
+		<div class="large-3 columns tableofcontents">
 			<a name="info"></a>
 			<h3>Table of Contents</h3>
 			<div class="row">
@@ -12,7 +12,7 @@
 				</ol>
 			</div>
 		</div>
-		<div class="large-8 columns">
+		<div class="large-9 columns">
 			<h3><?php echo config::name(); ?> Usage</h3>
 			<div class="row">
 				<div class="large-12 columns">
@@ -30,12 +30,19 @@
 						<p>This function allows you to add routes on the fly. This of course needs to be done before the model, view, and controller, but for those of you that develop your own classes this can come in handy if you want to alter the routes.</p>
 
 						<hr>
-						<h4>route::show();</h4>
+						<h4>route::show();</h4><a name="routeurl"></a>
 						<blockquote>
 							<p><em>Example:</em></p>
 							<p class="text-center"><code>route::show();</code></p>
 							<p><em>Output:</em></p>
 							<p><div class="centered"><?php route::show(); ?></div></p>
+						</blockquote>
+						<h4>route::url();</h4>
+						<blockquote>
+							<p><em>Example:</em></p>
+							<p class="text-center"><code>route::url();</code></p>
+							<p><em>Result:</em></p>
+							<p><div>This function is used in <code>view::render()</code> and is the main function that handles the routing. After this function runs, the files used for Controller, Model, and View are loaded for the view to use.</div></p>
 						</blockquote>
 					</div>
 
@@ -55,7 +62,7 @@
 							<p><pre class="text-center"><?php echo htmlspecialchars('<link rel="stylesheet" href="/css/style.css">'); ?></pre></p>
 						</blockquote>
 						<hr>
-						<h4>html::js(<em>'style.js' <span>[, $echo=true]</span></em>);</h4>
+						<h4>html::js(<em>'style.js' <span>[, $echo=true]</span></em>);</h4><a name="favicon"></a>
 						<blockquote>
 							<p><em>Example:</em></p>
 							<p class="text-center"><code>html::js('ez.js');</code></p>
@@ -63,7 +70,15 @@
 							<p><pre class="text-center"><?php echo htmlspecialchars('<script src="/js/ez.js"></script>'); ?></pre></p>
 						</blockquote>
 						<hr>
-						<h4>html::breadcrumbs();</h4><a name="crumbs"></a>
+						<h4>html::favicon(<em>'favicon.png' <span>[, $echo=true]</span></em>);</h4><a name="crumbs"></a>
+						<blockquote>
+							<p><em>Example:</em></p>
+							<p class="text-center"><code>html::favicon('favicon.ico');</code></p>
+							<p><em>Output:</em></p>
+							<p><pre class="text-center"><?php echo htmlspecialchars('<link rel="icon" href="/img/favicon.ico" type="image/x-icon">'); ?></pre></p>
+						</blockquote>
+						<hr>
+						<h4>html::breadcrumbs();</h4>
 						<blockquote>
 							<p><em>Example:</em></p>
 							<p class="text-center"><code>html::breadcrumbs();</code></p>
