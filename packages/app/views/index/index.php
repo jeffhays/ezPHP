@@ -18,6 +18,7 @@
 			<div class="panel">
 				<h3 class="subheader">Recent Updates:</h3>
 				<ul>
+					<li>w00t! Finally finished the pieces of the routing that were missing, including but not limited to: infinite parameters can now be passed in the controller function that is called, fail overs have been added to fix all the issues between routed URLs and non-routed URLs, and general pimpification of routing functions. I also added a <a href="/admin/users/edit/10">users view in the admin</a> to provide an example of how URL variables are passed.</li>
 					<li>Added <a href="/usage#favicon"><code>html::favicon()</code></a> function that outputs a HTML5 favicon link tag.</li>
 					<li>Implemented <a href="/usage/#user" alt="<?php echo config::name(); ?> User Class" title="<?php echo config::name(); ?> User Class">User Class</a> to handle sessions and allow central location for user data. You can pass the user class an array or object of data and it will automatically be handled through the session handler.</li>
 					<li>Added <a href="/usage#libs"><code>autoload::libs()</code></a> function to automatically load libraries from the folder you pass it</li>
@@ -33,7 +34,7 @@
 		<div class="large-4 columns">
 			<h3>&nbsp;</h3>
 			<div class="panel">
-				<h5 class="subheader">Current <?php echo config::name(); ?> Version: </h5><a class="small orange centered radius button" href="#" alt="Download <?php echo config::name() . ' ' . config::version(); ?>" title="Download <?php echo config::name() . ' ' . config::version(); ?>"><?php echo config::version(); ?></a>
+				<h5 class="subheader">Current <?php echo config::name(); ?> Version: </h5><a class="small orange centered radius button" href="<?php if(user::loggedin()) echo 'http://code.offthewallmedia.com/jeff/hmvc/repository/archive'; ?>" alt="Download <?php echo config::name() . ' ' . config::version(); ?>" title="Download <?php echo config::name() . ' ' . config::version(); ?>"><?php echo config::version(); ?></a>
 			</div>
 			<h4><i class="icon-truck medium-icon"></i> What's under the hood...</h4>
 			<p>The <?php echo config::name(); ?> project is a custom object-oriented PHP framework using namespaces. The front end is powered by Foundation CSS, Font Awesome, jQuery, and all sits on a RESTful URL structure.</p>

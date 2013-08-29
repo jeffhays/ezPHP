@@ -33,7 +33,8 @@ class view extends route {
 			'classes' => array(
 				'controller' => route::$controller,
 				'model' => route::$model,
-				'action' => route::$action
+				'action' => route::$action,
+				'method' => route::$method
 			),
 			'paths' => array(
 				'controller' => array(
@@ -75,10 +76,12 @@ class view extends route {
 			if(file_exists(LIB . 'defaultcontroller.php')) require_once(LIB . 'defaultcontroller.php');
 			if(file_exists(route::$controller_path)) require_once(route::$controller_path);
 
-			// Call controller before() and action() functions
+			// Call controller's before()
 			controller::before();
-			$action = route::$action;
-			controller::$action();
+			$action = route::$method;
+			
+			// Call controller's action function and pass in any parameters in the URL after the action
+			call_user_func_array("ez\app\controller::$action", route::$params);
 
 			// Set variables
 			extract(self::$_variables);
@@ -100,9 +103,9 @@ class view extends route {
 					include(route::$base . 'views' . DS . 'nav' . EXT);
 				}
 				
-				// View
-				if(file_exists(route::$view . DS . $action . EXT)){
-					include(route::$view . DS . $action . EXT);
+				// Index
+				if(file_exists(route::$view . DS . route::$method . EXT)){
+					include(route::$view . DS . route::$method . EXT);
 				} else {
 					include(route::$base . 'views' . DS . route::$action . DS . config::$index . EXT);
 				}
@@ -119,7 +122,7 @@ class view extends route {
 				include(route::$view . EXT);
 			}
 			
-			// Call controller after() function
+			// Call controller's after() function
 			controller::after();
 		}
 	}		

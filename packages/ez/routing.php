@@ -7,11 +7,13 @@ class route {
 
 	// Default routes
 	public static $map = array();
+	public static $params = array();
 
 	// Routed classes
 	public static $controller = false;
 	public static $model = false;
-	public static $action;
+	public static $action = false;
+	public static $method = false;
 
 	// Routed paths
 	public static $base = false;
@@ -21,7 +23,6 @@ class route {
 	
 	// Private variables
 	private static $_match = false;
-	private static $_params = false;
 
 	// Add routes
 	public static function add($routes){
@@ -52,7 +53,7 @@ class route {
 		// Get base url without params
 		$path = preg_replace('/\?(.*)/', '', $_SERVER['REQUEST_URI']);
 
-		// Check for routes from our parent class
+		// Check for routes from config
 		if(is_array(self::$map) && count(self::$map)){
 			foreach(self::$map as $url=>$base){
 				// Remove or add surrounding slashes as needed
@@ -85,6 +86,16 @@ class route {
 					// Set action
 					if(!self::$action) self::$action = isset($lib[0]) ? $lib[0] : config::$index;
 
+					// Set method
+					if(!self::$method) self::$method = isset($lib[1]) ? $lib[1] : self::$action;
+					
+					// Set parameters array
+					if(isset($lib[2])){
+						for($i = 2; $i <= count($lib)-1; $i++){
+							array_push(self::$params, $lib[$i]);
+						}
+					}
+
 					// Update static class variables
 					$controller = $model = $view = (isset($lib[0]) && trim($lib[0]) != '/') ? $lib[0] : config::$index;
 					self::$controller = $controller;
@@ -100,9 +111,10 @@ class route {
 			}
 		}
 
-		// No match
+		// Defaults
 		$controller = $model = $view = (isset($lib[0]) && trim($lib[0]) != '/') ? $lib[0] : config::$index;
 
+		// No match
 		if(!self::$_match){
 			// Set action
 			array_shift($lib);
@@ -112,6 +124,7 @@ class route {
 			if(!self::$controller) self::$controller = $controller;
 			if(!self::$model) self::$model = $model;
 			if(!self::$action) self::$action = $action;
+			if(!self::$method) self::$method = $action;
 	
 			// Set fully qualified path for each class
 			$controller = $base . 'controllers' . DS . $controller . EXT;
@@ -126,6 +139,12 @@ class route {
 			if(!self::$view) self::$view = $view;
 		}
 		
-	}	
+		// Set parameters array
+		if(!count(self::$params) && isset($lib[1])){
+			for($i = 1; $i <= count($lib)-1; $i++){
+				array_push(self::$params, $lib[$i]);
+			}
+		}
+	}
 	
 }
