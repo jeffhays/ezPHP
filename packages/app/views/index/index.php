@@ -18,6 +18,7 @@
 			<div class="panel">
 				<h3 class="subheader">Recent Updates:</h3>
 				<ul>
+					<li>Updated db class to finish support for other engines besides MySQL <small>(removed back ticks)</small></li>
 					<li>Added <a href="/usage/#ez"><code>ez::timer();</code></a> function to easily time your script's or function's execution time.
 					<li>Added a site_description setting to config, and <code>config::description();</code> for use in the meta tags.</li>
 					<li>w00t! Finally finished the pieces of the routing that were missing, including but not limited to: infinite parameters can now be passed in the controller function that is called, fail overs have been added to fix all the issues between routed URLs and non-routed URLs, and general pimpification of routing functions. I also added a <a href="/admin/users/edit/10">users view in the admin</a> to provide an example of how URL variables are passed.</li>
@@ -50,7 +51,6 @@
 				<h3 class="subheader">To Do:</h3>
 				<ul>
 					<li>Move dBug class from libs to core</li>
-					<li>Update db class to finish support for other engines besides MySQL <small>(remove back ticks)</small></li>
 					<li>Add usage documentation for db class</li>
 				</ul>
 			</div>
