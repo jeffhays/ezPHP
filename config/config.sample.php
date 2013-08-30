@@ -8,16 +8,11 @@ namespace ez;
 class config {
 
 	// Site settings
-	public static $site_title = 'ezPHP Framework | A simple HMVC framework with easy routing';
+	public static $site_title = 'PHP Framework | A simple HMVC framework with easy routing | ezPHP';
 	public static $site_description = "The ezPHP Framework is a very lightweight, open source, object-oriented HMVC framework written in PHP using namespaces. Easy routing, simple syntax, failovers, and aliases galore make this framework a breeze for novice or advanced developers.";
 	public static $site_name = 'ezPHP Framework';
 	public static $site_url = 'http://localhost/';
 	public static $site_version = '.1 alpha';
-	
-	// Paths
-	public static $site_css = '/css/';
-	public static $site_js = '/js/';
-	public static $site_img = '/img/';
 	
 	// Template settings
 	public static $index = 'index';
@@ -37,6 +32,11 @@ class config {
 	public static $log_errors = true;
 	public static $error_log = 'error.log';
 	public static $access_log = 'access.log';
+	
+	// Paths
+	public static $site_css = '/css/';
+	public static $site_js = '/js/';
+	public static $site_img = '/img/';
 	
 	// Session settings
 	public static $session_path = 'tmp/sessions';

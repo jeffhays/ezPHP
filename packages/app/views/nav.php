@@ -13,7 +13,7 @@
 				<!-- Left Nav Section -->
 				<ul class="left">
 					<li class="divider"></li>
-					<li class="has-dropdown"><a href="/usage/"><i class="icon-code"></i> Usage</a>
+					<li class="has-dropdown"><a href="/usage/#"><i class="icon-code"></i> Usage</a>
 						<ul class="dropdown">
 							<li class="divider"></li>
 							<li><a href="/usage/#info"><i class="icon-info-sign"></i> Info</a></li>
@@ -27,6 +27,22 @@
 							<li><a href="/usage/#ez"><i class="icon-archive"></i> ez class</a></li>
 							<li class="divider"></li>
 							<li><a href="/usage/#autoload"><i class="icon-archive"></i> autoload class</a></li>
+							<li class="divider"></li>
+						</ul>
+					</li>
+					<li class="divider"></li>
+					<li class="has-dropdown"><a href="/install/#"><i class="icon-download-alt"></i> Install</a>
+						<ul class="dropdown">
+							<li class="divider"></li>
+							<li><a href="/install/#git"><i class="icon-github-sign"></i> Setup git</a></li>
+							<li class="divider"></li>
+							<li><a href="/install/#config"><i class="icon-gears"></i> Setup config</a></li>
+							<li class="divider"></li>
+							<li><a href="/install/#permissions"><i class="icon-group"></i> Setup permissions</a></li>
+							<li class="divider"></li>
+							<li><a href="/install/#ignore"><i class="icon-"></i> Ignore app directory</a></li>
+							<li class="divider"></li>
+							<li><a href="/install/#update"><i class="icon-archive"></i> Update repo</a></li>
 							<li class="divider"></li>
 						</ul>
 					</li>
