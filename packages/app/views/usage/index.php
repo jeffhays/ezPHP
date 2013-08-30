@@ -296,8 +296,6 @@
 						<p class="push-1">(This would be a good example to extend the ez core for your own cookie handler)</p>
 					</p>
 				</blockquote>
-				<hr>				
-			</div>
-			
+			</div>			
 		</div>
 	</div>

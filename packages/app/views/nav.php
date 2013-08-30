@@ -79,7 +79,7 @@
 						<?php if(user::loggedin()){ ?>
 							<div style="float:left;color:#fff;margin:.6em 1em .6em 0;">Welcome <?php echo user::val('username'); ?>!</div>
 							<form style="float:right" action="/admin/logout" method="post">
-								<button class="small orange radius button" type="submit"><i class="icon-eject"></i> Logout</button>
+								<button class="small orange radius button" type="submit"><i class="icon-signout"></i> Logout</button>
 							</form>
 						<?php } else { ?>
 	<a class="small radius button" href="/admin/login"><i class="icon-unlock-alt"></i> Login</a>
