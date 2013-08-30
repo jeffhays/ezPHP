@@ -10,17 +10,9 @@ class controller extends \ez\app\DefaultController {
 	}
 	
 	public static function index(){
-		
+
 	}
-	
-	public static function routing(){
 		
-	}
-	
-	public static function templating(){
-		
-	}
-	
 	public static function after(){
 
 	}

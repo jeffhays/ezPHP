@@ -18,6 +18,69 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<p>Below is a working list of available usage. Check back here for updates on usage and how the framework works from the current git repo. When added functionality has gotten past the initial bugs and is fairly usable, I'll be sure to update this page with some more usage.
+					<h3 class="subheader"><a name="constants" alt="<?php echo config::title(); ?> Global Constants" title="<?php echo config::title(); ?> Global Constants">Global Constants</a></h3>
+					<div class="panel">
+						<table>
+							<thead>
+								<tr>
+									<td>Constant</td>
+									<td>Value</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><strong>DS</strong></td>
+									<td>DIRECTORY_SEPARATOR <em>- this would be "/" in most cases if you're smart enough to be using linux</em></td>
+								</tr>
+								<tr>
+									<td><strong>EXT</strong></td>
+									<td>.php <em>- I might let you config this later but I think for now let's assume you're using .php files :)</td>
+								</tr>
+								<tr>
+									<td><strong>BASE</strong></td>
+									<td>The base path of your <?php echo config::name(); ?> install</td>
+								</tr>
+								<tr>
+									<td><strong>CONFIG</strong></td>
+									<td>Path to <strong>config</strong> directory within the <strong>base path</strong> of your <?php echo config::name(); ?> install</td>
+								</tr>
+								<tr>
+									<td><strong>PKG</strong></td>
+									<td>Path to <strong>packages</strong> directory within the <strong>base path</strong> of your <?php echo config::name(); ?> install</td>
+								</tr>
+								<tr>
+									<td><strong>TMP</strong></td>
+									<td>Path to <strong>tmp</strong> directory within the <strong>base path</strong> of your <?php echo config::name(); ?> install</td>
+								</tr>
+								<tr>
+									<td><strong>LIB</strong></td>
+									<td>Path to <strong>lib</strong> directory within the <strong>packages directory</strong> of your <?php echo config::name(); ?> install</td>
+								</tr>
+								<tr>
+									<td><strong>APP</strong></td>
+									<td>Path to <strong>app</strong> directory within the <strong>packages directory</strong> of your <?php echo config::name(); ?> install</td>
+								</tr>
+								<tr>
+									<td><strong>CORE</strong></td>
+									<td>Path to <strong>ez</strong> directory within the <strong>packages directory</strong> of your <?php echo config::name(); ?> install</td>
+								</tr>
+								<tr>
+									<td><strong>SESS</strong></td>
+									<td>Path to <strong>sessions</strong> directory within the <strong>tmp directory</strong> of your <?php echo config::name(); ?> install</td>
+								</tr>
+								<tr>
+									<td><strong>LOG</strong></td>
+									<td>Path to <strong>logs</strong> directory within the <strong>tmp directory</strong> of your <?php echo config::name(); ?> install</td>
+								</tr>
+							</tbody>
+						</table>
+						<p>These can be pretty handy when you're including files. With the <a href="#autoload">autoload class</a> you can quickly and dynamically load files based on these paths. Here's some examples with and without using autoload.</p>
+						<blockquote>
+							<p><em>Example:</em></p>
+							<p class="text-center"><code>require_once(PKG . 'mypackage' . DS . 'myclass' . EXT);</code></p>
+							<p class="text-center"><code>autoload::add_class('ez\app\myclass', PKG . 'mypackage' . DS . 'myclass' . EXT);</code></p>
+						</blockquote>
+					</div>
 					<h3 class="subheader"><a name="routing" alt="<?php echo config::title(); ?> Routing" title="<?php echo config::title(); ?> Routing">Routing</a></h3>
 					<div class="panel">
 						<p>The routing was done so you don't have to be a regex nerd to complete the task at hand. It's setup with an associative array where the key of the array is the inbound URL and the value is the directory within the packages/app folder that you want the view to load from.</p>
@@ -178,7 +241,19 @@
 					<p><em>Output:</em></p>
 					<p><?php ez::dbug(array('user' => array('ID' => 2, 'name' => 'billy'), 'ip' => $_SERVER['REMOTE_ADDR'])); ?></p>
 				</blockquote>
-				<hr>				
+				<hr>
+				<h4>ez::timer();</h4>
+				<blockquote>
+					<p><em>Info:</em></p>
+					<p>Want to time your scripts or functions? This function allows you to toggle a microtime timer just like a stop watch to pull back how many seconds it took for an operation to complete.</p>
+					<p><em>Example:</em></p>
+					<p class="text-center"><code>ez::timer();</code></p>
+					<p class="text-center"><code>usleep(100);</code></p>
+					<p class="text-center"><code>ez::timer();</code></p>
+					<p><em>Output:</em></p>
+					<p><?php ez::timer(); usleep(100); ez::timer(); ?></p>
+				</blockquote>
+
 			</div>
 			<h3 class="subheader"><a name="autoload" alt="<?php echo config::title(); ?> autoload Class" title="<?php echo config::title(); ?> autoload Class">autoload Class</a></h3>
 			<div class="panel">

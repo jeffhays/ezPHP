@@ -22,7 +22,11 @@
 							<li class="divider"></li>
 							<li><a href="/usage/#templating"><i class="icon-html5"></i> Templating</a></li>
 							<li class="divider"></li>
-							<li><a href="/usage/#ez"><i class="icon-archive"></i> ez Class</a></li>
+							<li><a href="/usage/#user"><i class="icon-archive"></i> user class</a></li>
+							<li class="divider"></li>
+							<li><a href="/usage/#ez"><i class="icon-archive"></i> ez class</a></li>
+							<li class="divider"></li>
+							<li><a href="/usage/#autoload"><i class="icon-archive"></i> autoload class</a></li>
 							<li class="divider"></li>
 						</ul>
 					</li>
