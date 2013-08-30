@@ -65,13 +65,13 @@ class db extends PDO {
 			// Array input (better on resources)
 			if($arg) {
 				self::$i->columns = array();
-				foreach($arg as $a) self::$i->columns[] = $a;
+				foreach($arg as $a) self::$i->columns[] = strstr('`', $a) ? $a : "`$a`";
 			} else {
 				self::$i->columns = '*';				
 			}
 		} else {
 			// They passed a string so let's just use what they passed
-			self::$i->columns = $arg;
+			self::$i->columns = strstr('`', $arg) ? $arg : "`$arg`";
 		}
 		self::$i->sql .= "SELECT " . self::$i->columns;
 		return self::$i;
@@ -80,7 +80,7 @@ class db extends PDO {
 	// Update
 	public function update($arg) {
 		self::$i->querytype = 'UPDATE';
-		self::$i->table = "$arg";
+		self::$i->table = "`$arg`";
 		self::$i->sql = "UPDATE " . self::$i->table;
 
 		return self::$i;
@@ -94,11 +94,11 @@ class db extends PDO {
 			// Array of columns passed
 			self::$i->table = $table;
 			self::$i->columns = $columns;
-			self::$i->sql = "INSERT INTO " . self::$i->table . " (" . implode(",", self::$i->columns) . ")";
+			self::$i->sql = "INSERT INTO `" . self::$i->table . "` (`" . implode("`,`", self::$i->columns) . "`)";
 		} else {
 			// No columns passed (must be passing associative array in values())
 			self::$i->table = $table;
-			self::$i->sql = "INSERT INTO " . self::$i->table . "";
+			self::$i->sql = "INSERT INTO `" . self::$i->table . "`";
 		}
 		return self::$i;
 	}
@@ -106,7 +106,7 @@ class db extends PDO {
 	// Delete
 	public function delete($arg=false) {
 		self::$i->querytype = 'DELETE';
-		self::$i->table = $arg ? "$arg" : false;
+		self::$i->table = $arg ? "`$arg`" : false;
 		self::$i->sql = "DELETE FROM " . self::$i->table;
 		return self::$i;
 	}
@@ -135,7 +135,7 @@ class db extends PDO {
 	// Show columns from table
 	public function columns($args=false) {
 		if($args) {
-			$sql = "SHOW COLUMNS FROM $args";
+			$sql = "SHOW COLUMNS FROM " . (strstr($args, '`') ? $args : '`' . $args . '`');
 			return $this->obj($sql);
 		}
 		return false;
@@ -146,11 +146,11 @@ class db extends PDO {
 		if(self::$i->querytype == 'SELECT' && self::$i->columns) {
 		  // Allow both array or comma delimited input (array uses less resources)
 			if(is_array($args) && count($args) > 0) {
-				self::$i->table = implode(', ', $args);
-				self::$i->sql .= " FROM " . implode(', ', $args);
+				self::$i->table = '`' . implode('`, `', $args) . '`';
+				self::$i->sql .= " FROM `" . implode('`, `', $args) . "`";
 			} else {
-				self::$i->table = $args;
-				self::$i->sql .= " FROM " . $args;
+				self::$i->table = (strstr('`', $args) ? $args : "`$args`");
+				self::$i->sql .= " FROM " . (strstr('`', $args) ? $args : "`$args`");
 			}
 		}
 		return self::$i;
@@ -166,7 +166,7 @@ class db extends PDO {
 				foreach($args as $k=>$val) {
 					$val = $this->sanitize($val);
 					self::$i->columns[] = $k;
-					self::$i->sql .= "$c $k = $val";
+					self::$i->sql .= "$c `$k` = $val";
 					$c = ',';
 				}
 			} else {
@@ -189,7 +189,7 @@ class db extends PDO {
 					} else {
 						// Set columns
 						self::$i->columns = array_keys($args);
-						self::$i->sql .= ' (' . implode(', ', self::$i->columns) . ')';
+						self::$i->sql .= ' (`' . implode('`, `', self::$i->columns) . '`)';
 					}
 				}
 				// Set values
@@ -209,6 +209,7 @@ class db extends PDO {
 		// Initialize temp variables for string building
 		$tmpwhere = $tmpsql = '';
 		if($str && $operand && $condition != null) {
+			$str = strstr($str, '`') ? $str : "`$str`";
 			// Start where
 			if(is_object(self::$i)) {
 				$tmpwhere .= "WHERE $str $operand ";
@@ -236,15 +237,20 @@ class db extends PDO {
 						break;
 					default:
 						// Other operators
-						$condition = strstr($condition, '.') ? explode('.', $condition) : $condition;
-						if(is_array($condition)) $condition = implode('.', $condition);
-						$tmpwhere .= is_numeric($condition) ? $condition : $this->sanitize($condition);
-						$tmpsql .= is_numeric($condition) ? $condition : $this->sanitize($condition);
+						$condition = strstr($condition, '.') && strstr($condition, '`') ? explode('.', $condition) : $condition;
+						if(is_array($condition)){
+							$condition[0] = strstr($condition[0], '`') ? $condition[0] : '`'.$condition[0].'`';
+							$condition[1] = strstr($condition[1], '`') ? $condition[1] : '`'.$condition[1].'`';
+							$condition = implode('.', $condition);
+						}
+						$tmpwhere .= (is_numeric($condition) || strstr($condition, '`') ? $condition : $this->sanitize($condition));
+						$tmpsql .= (is_numeric($condition) || strstr($condition, '`') ? $condition : $this->sanitize($condition));
 						break;
 				}
 			}
 		} else if($str && $operand) {
 			// String and operand passed but no condition
+			$str = strstr($str, '`') ? $str : "`$str`";
 		if($this->columns && $this->table) {
 				$tmpwhere .= "WHERE $str $operand";
 				$tmpsql .= " WHERE $str $operand";
@@ -266,6 +272,7 @@ class db extends PDO {
 		// Initialize temp variables for string building
 		$tmpwhere = $tmpsql = '';
 		if($str && $operand && $condition != null) {
+			$str = strstr($str, '`') ? $str : "`$str`";
 			// Start where
 			if(is_object(self::$i)) {
 				$tmpwhere .= "AND $str $operand ";
@@ -293,15 +300,20 @@ class db extends PDO {
 						break;
 					default:
 						// Other operators
-						$condition = strstr($condition, '.') ? explode('.', $condition) : $condition;
-						if(is_array($condition)) $condition = implode('.', $condition);
-						$tmpwhere .= is_numeric($condition) ? $condition : $this->sanitize($condition);
-						$tmpsql .= is_numeric($condition) ? $condition : $this->sanitize($condition);
+						$condition = strstr($condition, '.') && strstr($condition, '`') ? explode('.', $condition) : $condition;
+						if(is_array($condition)){
+							$condition[0] = strstr($condition[0], '`') ? $condition[0] : '`'.$condition[0].'`';
+							$condition[1] = strstr($condition[1], '`') ? $condition[1] : '`'.$condition[1].'`';
+							$condition = implode('.', $condition);
+						}
+						$tmpwhere .= (is_numeric($condition) || strstr($condition, '`') ? $condition : $this->sanitize($condition));
+						$tmpsql .= (is_numeric($condition) || strstr($condition, '`') ? $condition : $this->sanitize($condition));
 						break;
 				}
 			}
 		} else if($str && $operand) {
 			// String and operand passed but no condition
+			$str = strstr($str, '`') ? $str : "`$str`";
 		if($this->columns && $this->table) {
 				$tmpwhere .= "AND $str $operand";
 				$tmpsql .= " AND $str $operand";
@@ -323,6 +335,7 @@ class db extends PDO {
 		// Initialize temp variables for string building
 		$tmpwhere = $tmpsql = '';
 		if($str && $operand && $condition != null) {
+			$str = strstr($str, '`') ? $str : "`$str`";
 			// Start where
 			if(is_object(self::$i)) {
 				$tmpwhere .= "OR $str $operand ";
@@ -350,15 +363,20 @@ class db extends PDO {
 						break;
 					default:
 						// Other operators
-						$condition = strstr($condition, '.') ? explode('.', $condition) : $condition;
-						if(is_array($condition)) $condition = implode('.', $condition);
-						$tmpwhere .= is_numeric($condition) ? $condition : $this->sanitize($condition);
-						$tmpsql .= is_numeric($condition) ? $condition : $this->sanitize($condition);
+						$condition = strstr($condition, '.') && strstr($condition, '`') ? explode('.', $condition) : $condition;
+						if(is_array($condition)){
+							$condition[0] = strstr($condition[0], '`') ? $condition[0] : '`'.$condition[0].'`';
+							$condition[1] = strstr($condition[1], '`') ? $condition[1] : '`'.$condition[1].'`';
+							$condition = implode('.', $condition);
+						}
+						$tmpwhere .= (is_numeric($condition) || strstr($condition, '`') ? $condition : $this->sanitize($condition));
+						$tmpsql .= (is_numeric($condition) || strstr($condition, '`') ? $condition : $this->sanitize($condition));
 						break;
 				}
 			}
 		} else if($str && $operand) {
 			// String and operand passed but no condition
+			$str = strstr($str, '`') ? $str : "`$str`";
 		if($this->columns && $this->table) {
 				$tmpwhere .= "OR $str $operand";
 				$tmpsql .= " OR $str $operand";
@@ -405,8 +423,8 @@ class db extends PDO {
 	// Join
 	public function join($table, $direction=false) {
 		if(self::$i->columns && self::$i->table && $table) {
-			self::$i->sql .= ($direction ? strtoupper($direction) : '') . " JOIN $table";
-			self::$i->join = ($direction ? strtoupper($direction) : '') . " JOIN $table";
+			self::$i->sql .= ($direction ? strtoupper($direction) : '') . " JOIN " . (strstr('`', $table) ? $table : "`$table`");
+			self::$i->join = ($direction ? strtoupper($direction) : '') . " JOIN " . (strstr('`', $table) ? $table : "`$table`");
 		} else {
 			$this->log .= "Error: Must have select columns, select table, and join table set for join()\n";
 		}
@@ -416,10 +434,10 @@ class db extends PDO {
 	// On (required after join)
 	public function on($col1, $operand, $col2) {
 		if(self::$i->join) {
-			$col1array = explode('.', $col1);
-			$col2array = explode('.', $col2);
-			$col1 = $col1array[0] . '.' . $col1array[1];
-			$col2 = $col2array[0] . '.' . $col2array[1];
+			$col1array = explode('.', preg_replace('/`/', '', $col1));
+			$col2array = explode('.', preg_replace('/`/', '', $col2));
+			$col1 = '`' . $col1array[0] . '`.`' . $col1array[1] . '`';
+			$col2 = '`' . $col2array[0] . '`.`' . $col2array[1] . '`';
 			self::$i->sql .= " ON $col1 $operand $col2";
 			self::$i->join = " ON $col1 $operand $col2";
 		} else {
@@ -432,9 +450,9 @@ class db extends PDO {
 	public function order($cols=false, $direction=false) {
 		if(self::$i->querytype == 'SELECT' && self::$i->columns && self::$i->table) {
 			if(is_array($cols) && count($cols) > 0) {
-				self::$i->order = implode(', ', $cols);
+				self::$i->order = strstr($cols[0], '`') ? implode(', ', $cols) : '`' . implode('`, `', $cols) . '`';
 			} else if($cols) {
-				self::$i->order = $cols;
+				self::$i->order = !strstr($cols, ',') ? '`' . $cols . '`' : $cols;
 			}
 			self::$i->sql .= " ORDER BY " . self::$i->order . " " . (isset($direction) && strlen($direction) > 0 ? $direction : "ASC");
 		}
@@ -559,7 +577,7 @@ class db extends PDO {
 
 	// Check if a table exists
 	public function istable($table) {
-		$query = @$this->prepare("SHOW TABLES FROM {$this->db} LIKE '$table'");
+		$query = @$this->prepare("SHOW TABLES FROM `{$this->db}` LIKE '$table'");
 		$query->execute();
 		return $query->rowCount() == 1 ? true : false;
 	}

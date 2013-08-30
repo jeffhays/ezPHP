@@ -40,7 +40,7 @@
 							<li class="divider"></li>
 							<li><a href="/install/#permissions"><i class="icon-group"></i> Setup permissions</a></li>
 							<li class="divider"></li>
-							<li><a href="/install/#ignore"><i class="icon-"></i> Ignore app directory</a></li>
+							<li><a href="/install/#ignore"><i class="icon-eye-close"></i> Ignore app directory</a></li>
 							<li class="divider"></li>
 							<li><a href="/install/#update"><i class="icon-archive"></i> Update repo</a></li>
 							<li class="divider"></li>

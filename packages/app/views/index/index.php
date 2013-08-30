@@ -51,6 +51,7 @@
 				<ul>
 					<li>Move dBug class from libs to core</li>
 					<li>Update db class to finish support for other engines besides MySQL <small>(remove back ticks)</small></li>
+					<li>Add usage documentation for db class</li>
 				</ul>
 			</div>
 			
