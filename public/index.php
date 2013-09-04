@@ -59,8 +59,6 @@ if(!function_exists('bootstrap_autoloader')){
 		
 		// Load classes - usage: array(namespace\class => path/to/class.php)
 		autoload::add_classes(array(
-			'ez\core\session' => CORE . 'session.php',
-			'ez\core\auth' => CORE . 'auth.php',
 			'ez\core\user' => CORE . 'user.php',
 			'ez\core\route' => CORE . 'routing.php',
 			'ez\core\db' => CORE . 'db.php',
@@ -76,9 +74,8 @@ if(!function_exists('bootstrap_autoloader')){
 		alias(array(
 			'ez\config' => 'config',
 			'ez\routing' => 'routing',
-			'ez\core\auth' => 'auth',
-			'ez\core\user' => 'user',
 			'ez\core\autoloader' => 'autoload',
+			'ez\core\user' => 'user',
 			'ez\core\db' => 'db',
 			'ez\core\ez' => 'ez',
 			'ez\core\html' => 'html',
@@ -87,7 +84,7 @@ if(!function_exists('bootstrap_autoloader')){
 		));
 
 		// Start session if needed
-		auth::init();
+		user::init();
 
 		// Initialize database connection
 		db::init(config::dbhost(), config::dbname(), config::dbuser(), config::dbpass());
