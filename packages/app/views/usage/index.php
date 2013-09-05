@@ -171,6 +171,7 @@
 					<p class="text-center"><code>user::login(array('ID' => 2, 'username' => 'jeff'));</code></p>
 					<p><em>Result:</em></p>
 					<p>If the <em>$values</em> parameter is an array or object that has values, the User Class will automatically set $_SESSION variables for you based on the values you pass it. This allows you to do your own checking to see if the user successfully logged in. The intention of coding it like this was so that you can use this directly with the db class.</p>
+					<p><cite><span style="color:#ff0000">*</span><strong style="color:#ff7f00">NEW</strong><span style="color:#ff0000">*</span> &mdash; This function will now automatically redirect back to the URL that called the <code>user::require_login()</code> function</cite></p>
 					<p><em>Example with db class:</em></p>
 					<p><code>
 						if(is_array($_POST) && isset($_POST['username']) && isset($_POST['password'])){<br>
@@ -260,11 +261,11 @@
 				<h4>autoload::libs(<em>'path/to/libs/directory'</em>);</h4>
 				<blockquote>
 					<p><em>Info:</em></p>
-					<p>This function will automatically load PHP files from the directory passed to it. I use this same method in the public/index.php file so our lib directory is loaded by using <code>autoload::libs(LIB);</code></p>
+					<p>This function will automatically load PHP files from the directory passed to it. I use this same method in the public/index.php file so our lib directory is automatically loaded using <code>autoload::libs(LIB);</code></p>
 					<p><em>Example:</em></p>
 					<p class="text-center"><code>autoload::libs(PKG . 'my_addon');</code></p>
 					<p><em>Result:</em></p>
-					<p>Loads all .php files from packages/my_addon. You'll need to review the list of constants when including files to make your function calls easy.</p>
+					<p>Loads all .php files from packages/my_addon. You'll need to review the <a href="#info">list of constants</a> when including files to make your function calls easy.</p>
 				</blockquote>
 				<hr>				
 				<h4>autoload::add_classes(<em>array('namespace\classname' => 'path/to/file.php')</em>);</h4>

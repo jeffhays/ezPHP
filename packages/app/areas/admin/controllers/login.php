@@ -21,10 +21,8 @@ class controller extends \ez\app\DefaultController {
 										 ->where('username', '=', $_POST['username'])
 										 ->andwhere('password', '=', md5($_POST['password']))
 										 ->row();
-										 
+			// Login user
 			$user = user::login($user);
-			// Forward user
-			if($user) header('Location: /admin/index');
 		}
 	}
 

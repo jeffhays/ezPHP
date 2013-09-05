@@ -9,9 +9,8 @@ use ez\config as config;
 class user {
 
 	// Session array key index
-	private static $_key = 'auth';	
+	private static $_key = 'auth';
 	private static $_file = false;
-	private static $_return = false;
 
   // Start session
 	public static function init(){
@@ -31,10 +30,10 @@ class user {
 		}
 	}
   
-  // Require login on the page this is called on. Will forward to the $login_url from the config if not logged in.
+  // Require login on the page this is called on. Will forward to the $login_url from the config or $url passed if not logged in.
   public static function require_login($url=false){
   	// Set our return URL
-  	self::$_return = $_SERVER['REQUEST_URI'];
+  	$_SESSION[self::$_key . '_return_url'] = $_SERVER['REQUEST_URI'];
     // If the user isn't logged in and the current URL isn't the login url, forward them to login page
     if(!isset($_SESSION[self::$_key]) && !strstr($_SERVER['REQUEST_URI'], config::$login_url)){
       header('Location: ' . ($url ? $url : config::$login_url));
@@ -52,7 +51,7 @@ class user {
 				// Set $_SESSION variables
 				$_SESSION[self::$_key] = $values;
 				// Redirect if we know where to go
-				if(self::$_return) header('Location: ' . self::$_return);
+				if(isset($_SESSION[self::$_key . '_return_url'])) header('Location: ' . $_SESSION[self::$_key . '_return_url']);
 				return true;
 			}
 		}

@@ -1,11 +1,10 @@
 <?php
 namespace ez\app;
-
-// Namespace aliases
-use ez\app\dbug as dbug;
+use ez\core\db as db;
+use ez\core\ez as ez;
 
 class model extends \ez\app\DefaultModel {
-	
 
 	
+
 }
