@@ -5,7 +5,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<div class="panel callout" id="start1">
-						<p>The <?php echo config::name(); ?> is an open source object-oriented HMVC framework written in PHP. The core of the project was recently started on August 16<sup>th</sup>, 2013 by Jeff Hays as an excuse for learning namespaces and routing from scratch. It's light weight, easy-to-use, and was programmed specifically to make it easy to use for developers. This is accomplished by autoloading classes and providing as many sensible aliases and syntax options as possible.</p>
+						<p>The <?php echo config::name(); ?> is an open source object-oriented HMVC framework written in PHP. The core of the project was recently started on August 16<sup>th</sup>, 2013 by Jeff Hays as an excuse for learning namespaces and routing from scratch. It's light weight, easy-to-use, and was programmed specifically to make it easy for developers by autoloading classes and providing as many sensible aliases and syntax options as possible.</p>
 					</div>
 
 					<h3 class="subheader">Model, View, and Controller</h3>
