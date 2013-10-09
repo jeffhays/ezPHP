@@ -5,13 +5,11 @@ Another PHP Framework that's geared to be extremely lightweight and easy to use 
 
 Full usage and instructions can be found here:  http://ezphp.org/usage/#
 
-=====
 Usage
 =====
 
 Below is a working list of available usage. Check back here for updates on usage and how the framework works from the current git repo. When added functionality has gotten past the initial bugs and is fairly usable, I'll be sure to update this page with some more usage.
 
-================
 Global Constants
 ================
 
@@ -34,7 +32,6 @@ Example:
 	require_once(PKG . 'mypackage' . DS . 'myclass' . EXT);
 	autoload::add_class('ez\app\myclass', PKG . 'mypackage' . DS . 'myclass' . EXT);
 
-=======
 Routing
 =======
 
