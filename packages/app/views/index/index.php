@@ -5,7 +5,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<div class="panel callout" id="start1">
-						<p>The <?php echo config::name(); ?> is an open source object-oriented HMVC framework written in PHP. The core of the project was recently started on August 16<sup>th</sup>, 2013 by Jeff Hays as an excuse for learning namespaces and routing from scratch. It's light weight, easy-to-use, and was programmed specifically to make it easy for developers by autoloading classes and providing as many sensible aliases and syntax options as possible.</p>
+						<p>The <?php echo config::name(); ?> is an open source object-oriented PHP framework written with a typical HMVC (no ORM in the model yet, so this is specifically talking about conveniently auto-loaded views, controllers, and models). The core of the project was started in 3 long nights by Jeff Hays out of a frustration with most light-weight oop PHP frameworks not having insanely simple routing and syntax.</p>
 					</div>
 
 					<h3 class="subheader">Model, View, and Controller</h3>
@@ -37,11 +37,10 @@
 		<div class="large-4 columns">
 			<h3>&nbsp;</h3>
 			<div class="panel">
-				<h5 class="subheader">Current <?php echo config::name(); ?> Version: </h5><a class="small orange centered radius button" href="<?php if(user::loggedin()) echo 'http://code.offthewallmedia.com/jeff/hmvc/repository/archive'; ?>" alt="Download <?php echo config::name() . ' ' . config::version(); ?>" title="Download <?php echo config::name() . ' ' . config::version(); ?>"><i class="icon-code-fork icon-flip-horizontal left"></i> <?php echo config::version(); ?> <i class="icon-code-fork right"></i></a>
-				<?php if(!user::loggedin()){ ?>
-				<p><small><div class="error text-center">(Sorry... you must be logged in to download the source)</div></small></p>
+				<h5 class="subheader">Current <?php echo config::name(); ?> Version: </h5><a class="small orange centered radius button" href="https://github.com/jphase/ezPHP/archive/master.zip" alt="Download <?php echo config::name() . ' ' . config::version(); ?>" title="Download <?php echo config::name() . ' ' . config::version(); ?>"><i class="icon-code-fork icon-flip-horizontal left"></i> <?php echo config::version(); ?> <i class="icon-code-fork right"></i></a>
+				<p><small><div class="error text-center">(OMG!!! ezPHP just went open source!)</div></small></p>
+				<p>ezPHP has been recently made into a public repository on github.com so you can download, browse, and use the code at your liesure. Please keep in mind that this project is still in its infancy and the bulk of the code needs your help and critique to make it better! I'm always looking for more developers to help contribute to any of my open source projects, so if you like what you see then PLEASE PLEASE contribute!<p class="text-center"><a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!" target="_blank"><i class="icon-github icon-large"></i> fork me on github! <i class="icon-github icon-large"></i></a></p></p>
 				<p class="text-center"><em>Read below to contact the developer...</em> <i class="icon-level-down icon-small"></i></p>
-				<?php } ?>
 			</div>
 			<h4><i class="icon-truck medium-icon"></i> What's under the hood...</h4>
 			<p>The <?php echo config::name(); ?> project is a custom object-oriented PHP framework using namespaces. The front end is powered by Foundation CSS, Font Awesome, jQuery, and all sits on a RESTful URL structure.</p>
@@ -56,7 +55,7 @@
 			</div>
 			
 			<h4><i class="icon-envelope medium-icon"></i> Try <?php echo config::name(); ?></h4>
-			<p>Wanna start using <?php echo config::name(); ?>? It is currently on limited distribution since it is in its infancy. If you would like to be a part of the ezPHP development team, send an email to jeff at offthewallmedia dot com and I'll send you teh codez! o_O</p>
+			<p>Wanna start using <?php echo config::name(); ?>? If you would like to be a part of the ezPHP development team, then <a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!"><i class="icon-github icon-large"></i> fork me on github! <i class="icon-github icon-large"></i></a></p>
 			<p>This site is a working copy of what comes with the git repo and will be exactly what you get if you want to look at it and decide if you like it enough to contribute as a developer.</p>
 			
 		</div>
