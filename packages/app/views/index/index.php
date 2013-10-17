@@ -55,7 +55,7 @@
 			</div>
 			
 			<h4><i class="icon-envelope medium-icon"></i> Try <?php echo config::name(); ?></h4>
-			<p>Wanna start using <?php echo config::name(); ?>? If you would like to be a part of the ezPHP development team, then <a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!"><i class="icon-github icon-large"></i> fork me on github! <i class="icon-github icon-large"></i></a></p>
+			<p>Wanna start using <?php echo config::name(); ?>? If you would like to be a part of the ezPHP development team, then <p class="text-center"><a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!"><i class="icon-github icon-large"></i> fork me on github! <i class="icon-github icon-large"></i></a></p></p>
 			<p>This site is a working copy of what comes with the git repo and will be exactly what you get if you want to look at it and decide if you like it enough to contribute as a developer.</p>
 			
 		</div>
