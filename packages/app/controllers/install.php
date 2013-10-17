@@ -7,7 +7,7 @@ use ez\core\user as user;
 class controller extends \ez\app\DefaultController {
 	
 	public static function before(){
-		user::require_login();
+
 	}
 	
 	public static function index(){

@@ -13,7 +13,7 @@ Below is a working list of available usage. Check back here for updates on usage
 Global Constants
 ================
 
-	DS DIRECTORY_SEPARATOR - this would be "/" in most cases if you're smart enough to be using linux
+	DS - (DIRECTORY_SEPARATOR) this would be "/" in most cases if you're smart enough to be using linux
 	EXT - (.php) I might let you config this later but I think for now let's assume you're using .php files :)
 	BASE - The base path of your ezPHP Framework install
 	CONFIG - Path to config directory within the base path of your ezPHP Framework install
