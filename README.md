@@ -13,17 +13,17 @@ Below is a working list of available usage. Check back here for updates on usage
 Global Constants
 ================
 
-	``DS`` DIRECTORY_SEPARATOR - this would be "/" in most cases if you're smart enough to be using linux
-	``EXT`` .php - I might let you config this later but I think for now let's assume you're using .php files :)
-	``BASE`` The base path of your ezPHP Framework install
-	``CONFIG`` Path to config directory within the base path of your ezPHP Framework install
-	``PKG`` Path to packages directory within the base path of your ezPHP Framework install
-	``TMP`` Path to tmp directory within the base path of your ezPHP Framework install
-	``LIB`` Path to lib directory within the packages directory of your ezPHP Framework install
-	``APP`` Path to app directory within the packages directory of your ezPHP Framework install
-	``CORE`` Path to ez directory within the packages directory of your ezPHP Framework install
-	``SESS`` Path to sessions directory within the tmp directory of your ezPHP Framework install
-	``LOG`` Path to logs directory within the tmp directory of your ezPHP Framework install
+	DS DIRECTORY_SEPARATOR - this would be "/" in most cases if you're smart enough to be using linux
+	EXT - (.php) I might let you config this later but I think for now let's assume you're using .php files :)
+	BASE - The base path of your ezPHP Framework install
+	CONFIG - Path to config directory within the base path of your ezPHP Framework install
+	PKG - Path to packages directory within the base path of your ezPHP Framework install
+	TMP - Path to tmp directory within the base path of your ezPHP Framework install
+	LIB - Path to lib directory within the packages directory of your ezPHP Framework install
+	APP - Path to app directory within the packages directory of your ezPHP Framework install
+	CORE - Path to ez directory within the packages directory of your ezPHP Framework install
+	SESS - Path to sessions directory within the tmp directory of your ezPHP Framework install
+	LOG - Path to logs directory within the tmp directory of your ezPHP Framework install
 
 These can be pretty handy when you're including files. With the autoload class you can quickly and dynamically load files based on these paths. Here's some examples with and without using autoload.
 
