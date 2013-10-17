@@ -20,12 +20,11 @@
 					<p>These are some basic installation instructions. They are sort of general since I don't have enough time to document everyone's server environment. If any of these instructions seem erroneous or you have some errors on your screen you'd like some help with, feel free to contact <a href="mailto:jeff@offthewallmedia.com?subject=ezPHP+install+bug">Jeff Hays</a> to report your issue.</p>
 					<h3 class="subheader"><a name="git" alt="Setup git repository" title="Setup git repository">Setup git repository</a></h3>
 					<div class="panel">
-						<h4>Request access</h4>
-						<p>If you haven't already gotten access to the git repository, <a href="mailto:jeff@offthewallmedia.com?subject=ezPHP+git+access">email Jeff Hays</a> and request access. These installation steps are assuming you already have git installed and the commands are meant for the command line. After you have access you should be able to login to gitlab and issue the following commands:</p>
+						<p>Start by <a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!" target="_blank"><i class="icon-github icon-large"></i> forking me on github! <i class="icon-github icon-large"></i></a> These installation steps are assuming you already have git installed and the commands are meant for a unix/linux command line. After you've forked the repo, you should be able to add it how your normally would your own github projects:</p>
 						<hr>
 						<blockquote>
 							<p><code>git init</code></p>
-							<p><code>git remote add origin gitlab@code.offthewallmedia.com:jeff/hmvc.git</code></p>
+							<p><code>git remote add origin git@github.com:jphase/ezPHP.git</code></p>
 							<p><code>git pull origin master</code></p>
 						</blockquote>
 						<hr>
@@ -59,6 +58,7 @@
 							<p><code>chmod -R g+w tmp</code></p>
 						</blockquote>
 						<hr>
+						<p>For any other more custom configs, just make sure apache has write access to the tmp directory</p>
 					</div>
 					<h3 class="subheader"><a name="ignore" alt="Ignore app directory" title="Ignore app directory">Ignore app directory</a></h3>
 					<div class="panel">
