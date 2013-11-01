@@ -13,36 +13,36 @@
 				<!-- Left Nav Section -->
 				<ul class="left">
 					<li class="divider"></li>
-					<li class="has-dropdown"><a href="/usage/#"><i class="icon-code"></i> Usage</a>
+					<li class="has-dropdown"><a href="/usage/#"><i class="fa fa-code"></i> Usage</a>
 						<ul class="dropdown">
 							<li class="divider"></li>
-							<li><a href="/usage/#info"><i class="icon-info-sign"></i> Info</a></li>
+							<li><a href="/usage/#info"><i class="fa fa-info-circle"></i> Info</a></li>
 							<li class="divider"></li>
-							<li><a href="/usage/#routing"><i class="icon-sort-by-attributes-alt"></i> Routing</a></li>
+							<li><a href="/usage/#routing"><i class="fa fa-sort-amount-asc"></i> Routing</a></li>
 							<li class="divider"></li>
-							<li><a href="/usage/#templating"><i class="icon-html5"></i> Templating</a></li>
+							<li><a href="/usage/#templating"><i class="fa fa-html5"></i> Templating</a></li>
 							<li class="divider"></li>
-							<li><a href="/usage/#user"><i class="icon-archive"></i> user class</a></li>
+							<li><a href="/usage/#user"><i class="fa fa-archive"></i> user class</a></li>
 							<li class="divider"></li>
-							<li><a href="/usage/#ez"><i class="icon-archive"></i> ez class</a></li>
+							<li><a href="/usage/#ez"><i class="fa fa-archive"></i> ez class</a></li>
 							<li class="divider"></li>
-							<li><a href="/usage/#autoload"><i class="icon-archive"></i> autoload class</a></li>
+							<li><a href="/usage/#autoload"><i class="fa fa-archive"></i> autoload class</a></li>
 							<li class="divider"></li>
 						</ul>
 					</li>
 					<li class="divider"></li>
-					<li class="has-dropdown"><a href="/install/#"><i class="icon-download-alt"></i> Install</a>
+					<li class="has-dropdown"><a href="/install/#"><i class="fa fa-download-alt"></i> Install</a>
 						<ul class="dropdown">
 							<li class="divider"></li>
-							<li><a href="/install/#git"><i class="icon-github-sign"></i> Setup git</a></li>
+							<li><a href="/install/#git"><i class="fa fa-github-alt"></i> Setup git</a></li>
 							<li class="divider"></li>
-							<li><a href="/install/#config"><i class="icon-gears"></i> Setup config</a></li>
+							<li><a href="/install/#config"><i class="fa fa-gears"></i> Setup config</a></li>
 							<li class="divider"></li>
-							<li><a href="/install/#permissions"><i class="icon-group"></i> Setup permissions</a></li>
+							<li><a href="/install/#permissions"><i class="fa fa-group"></i> Setup permissions</a></li>
 							<li class="divider"></li>
-							<li><a href="/install/#ignore"><i class="icon-eye-close"></i> Ignore app directory</a></li>
+							<li><a href="/install/#ignore"><i class="fa fa-eye-slash"></i> Ignore app directory</a></li>
 							<li class="divider"></li>
-							<li><a href="/install/#update"><i class="icon-archive"></i> Update repo</a></li>
+							<li><a href="/install/#update"><i class="fa fa-archive"></i> Update repo</a></li>
 							<li class="divider"></li>
 						</ul>
 					</li>
@@ -88,17 +88,17 @@
 				<ul class="right">
 				<?php if(user::loggedin()){ ?>
 					<li class="divider hide-for-small"></li>
-					<li><a href="/admin"><i class="icon-cog icon-spin"></i> Admin</a></li>
+					<li><a href="/admin"><i class="fa fa-cog fa-spin"></i> Admin</a></li>
 				<?php } ?>
 					<li class="divider"></li>
 					<li class="has-form">
 						<?php if(user::loggedin()){ ?>
 							<div style="float:left;color:#fff;margin:.6em 1em .6em 0;">Welcome <?php echo user::val('username'); ?>!</div>
 							<form style="float:right" action="/admin/logout" method="post">
-								<button class="small orange radius button" type="submit"><i class="icon-signout"></i> Logout</button>
+								<button class="small orange radius button" type="submit"><i class="fa fa-signout"></i> Logout</button>
 							</form>
 						<?php } else { ?>
-	<a class="small radius button" href="/admin/login"><i class="icon-unlock-alt"></i> Login</a>
+	<a class="small radius button" href="/admin/login"><i class="fa fa-unlock-o"></i> Login</a>
 						<?php } ?>
 					</li>
 				</ul>

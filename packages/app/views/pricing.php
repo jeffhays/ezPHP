@@ -25,7 +25,7 @@
 				<div class="panel">
 					<div class="row">
 						<div class="small-2 large-1 columns">
-							<i class="icon-exclamation-sign secondary large-icon"></i>
+							<i class="fa fa-exclamation-triangle secondary large-icon"></i>
 						</div>
 						<p class="small-10 large-11 columns">Pricing <em>does not apply</em> to clients. If you are someone's client and would like to place a request	<a href="/admin/login" class="tiny orange radius button" alt="<?php echo config::name(); ?> Login" title="<?php echo config::name(); ?> Login">Click Here</a> to get started!</p>
 					</div>
@@ -40,7 +40,7 @@
 					    <li class="bullet-item">5 Clients</li>
 					    <li class="bullet-item">10 Requests Per Client</li>
 					    <li class="cta-button">
-					    	<a href="#" class="small radius button" alt="<?php echo config::name(); ?> Trial" title="<?php echo config::name(); ?> Pricing"><i class="icon-shopping-cart"></i> Try Now</a>
+					    	<a href="#" class="small radius button" alt="<?php echo config::name(); ?> Trial" title="<?php echo config::name(); ?> Pricing"><i class="fa fa-shopping-cart"></i> Try Now</a>
 					    </li>
 					  </ul>
 					</div>
@@ -52,7 +52,7 @@
 					    <li class="bullet-item">5 Users</li>
 					    <li class="bullet-item">50 Clients</li>
 					    <li class="bullet-item">100 Requests Per Client</li>
-					    <li class="cta-button"><a class="small radius button" href="#"><i class="icon-shopping-cart"></i> Buy Now</a></li>
+					    <li class="cta-button"><a class="small radius button" href="#"><i class="fa fa-shopping-cart"></i> Buy Now</a></li>
 					  </ul>
 					</div>
 					<div class="large-4 columns">
@@ -63,7 +63,7 @@
 					    <li class="bullet-item">Unlimited Users</li>
 					    <li class="bullet-item">Unlimited Clients</li>
 					    <li class="bullet-item">Unlimited Requests Per Client</li>
-					    <li class="cta-button"><a class="small radius button" href="#"><i class="icon-shopping-cart"></i> Buy Now</a></li>
+					    <li class="cta-button"><a class="small radius button" href="#"><i class="fa fa-shopping-cart"></i> Buy Now</a></li>
 					  </ul>
 					</div>
 				</div>

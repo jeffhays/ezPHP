@@ -20,7 +20,7 @@
 					<p>These are some basic installation instructions. They are sort of general since I don't have enough time to document everyone's server environment. If any of these instructions seem erroneous or you have some errors on your screen you'd like some help with, feel free to contact <a href="mailto:jeff@offthewallmedia.com?subject=ezPHP+install+bug">Jeff Hays</a> to report your issue.</p>
 					<h3 class="subheader"><a name="git" alt="Setup git repository" title="Setup git repository">Setup git repository</a></h3>
 					<div class="panel">
-						<p>Start by <a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!" target="_blank"><i class="icon-github icon-large"></i> forking me on github! <i class="icon-github icon-large"></i></a> These installation steps are assuming you already have git installed and the commands are meant for a unix/linux command line. After you've forked the repo, you should be able to add it how your normally would your own github projects:</p>
+						<p>Start by <a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!" target="_blank"><i class="fa fa-github fa-large"></i> forking me on github! <i class="fa fa-github fa-large"></i></a> These installation steps are assuming you already have git installed and the commands are meant for a unix/linux command line. After you've forked the repo, you should be able to add it how your normally would your own github projects:</p>
 						<hr>
 						<blockquote>
 							<p><code>git init</code></p>

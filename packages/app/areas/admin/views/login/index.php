@@ -8,7 +8,7 @@
 		    <fieldset>
 		      <div class="row collapse">            
 		        <div class="small-2 large-1 columns">
-		          <span class="prefix"><i class="icon-user"></i></span>
+		          <span class="prefix"><i class="fa fa-user"></i></span>
 		        </div>
 		        <div class="small-10 large-11 columns">
 		          <input type="text" name="username" id="user" placeholder="username">
@@ -16,7 +16,7 @@
 		      </div>
 		      <div class="row collapse">
 		        <div class="small-2 large-1 columns">
-		          <span class="prefix"><i class="icon-asterisk"></i></span>
+		          <span class="prefix"><i class="fa fa-asterisk"></i></span>
 		        </div>
 		        <div class="small-10 large-11 columns">
 		          <input type="password" name="password" id="password" placeholder="password">
