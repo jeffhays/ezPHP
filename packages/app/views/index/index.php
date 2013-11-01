@@ -54,9 +54,9 @@
 				</ul>
 			</div>
 			
-			<h4><i class="fa fa-envelope medium-icon"></i> Try <?php echo config::name(); ?></h4>
+			<h4><i class="fa fa-inbox medium-icon"></i> Try <?php echo config::name(); ?></h4>
 			<p>Wanna start using <?php echo config::name(); ?>? If you would like to be a part of the ezPHP development team, then <p class="text-center"><a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!" target="_blank"><i class="fa fa-github-alt fa-large"></i> fork me on github! <i class="fa fa-github-alt fa-large"></i></a></p></p>
 			<p>This site is a working copy of what comes with the git repo and will be exactly what you get if you want to look at it and decide if you like it enough to contribute as a developer.</p>
-			
+			<p>If you have questions, suggestions, or any productive ideas, please feel free to email: <p class="text-center"><a href="mailto:jeff@offthewallmedia.com?subject=ezphp.org" alt="Email the developer" title="Email the developer" target="_blank"><i class="fa fa-envelope"></i> jeff@offthewallmedia.com <i class="fa fa-envelope"></i></a></p></p>
 		</div>
 	</div>
