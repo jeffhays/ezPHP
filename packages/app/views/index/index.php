@@ -37,9 +37,9 @@
 		<div class="large-4 columns">
 			<h3>&nbsp;</h3>
 			<div class="panel">
-				<h5 class="subheader">Current <?php echo config::name(); ?> Version: </h5><a class="small orange centered radius button" href="https://github.com/jphase/ezPHP/archive/master.zip" alt="Download <?php echo config::name() . ' ' . config::version(); ?>" title="Download <?php echo config::name() . ' ' . config::version(); ?>"><i class="fa fa-code-fork fa-flip-horizontal left"></i> <?php echo config::version(); ?> <i class="fa fa-code-fork right"></i></a>
+				<h5 class="subheader">Current <?php echo config::name(); ?> Version: </h5><a class="small orange centered radius button" href="https://github.com/jphase/ezPHP/archive/master.zip" alt="Download <?php echo config::name() . ' ' . config::version(); ?>" title="Download <?php echo config::name() . ' ' . config::version(); ?>" target="_blank"><i class="fa fa-code-fork fa-flip-horizontal left"></i> <?php echo config::version(); ?> <i class="fa fa-code-fork right"></i></a>
 				<p><small><div class="error text-center">(OMG!!! ezPHP just went open source!)</div></small></p>
-				<p>ezPHP has been recently made into a public repository on github.com so you can download, browse, and use the code at your liesure. Please keep in mind that this project is still in its infancy and the bulk of the code needs your help and critique to make it better! I'm always looking for more developers to help contribute to any of my open source projects, so if you like what you see then PLEASE PLEASE contribute!<p class="text-center"><a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!" target="_blank"><i class="fa fa-github fa-large"></i> fork me on github! <i class="fa fa-github fa-large"></i></a></p></p>
+				<p>ezPHP has been recently made into a public repository on github.com so you can download, browse, and use the code at your liesure. Please keep in mind that this project is still in its infancy and the bulk of the code needs your help and critique to make it better! I'm always looking for more developers to help contribute to any of my open source projects, so if you like what you see then PLEASE PLEASE contribute!<p class="text-center"><a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!" target="_blank"><i class="fa fa-github-alt fa-large"></i> fork me on github! <i class="fa fa-github-alt fa-large"></i></a></p></p>
 				<p class="text-center"><em>Read below to contact the developer...</em> <i class="fa fa-level-down fa-small"></i></p>
 			</div>
 			<h4><i class="fa fa-truck medium-icon"></i> What's under the hood...</h4>
@@ -55,7 +55,7 @@
 			</div>
 			
 			<h4><i class="fa fa-envelope medium-icon"></i> Try <?php echo config::name(); ?></h4>
-			<p>Wanna start using <?php echo config::name(); ?>? If you would like to be a part of the ezPHP development team, then <p class="text-center"><a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!"><i class="fa fa-github fa-large"></i> fork me on github! <i class="fa fa-github fa-large"></i></a></p></p>
+			<p>Wanna start using <?php echo config::name(); ?>? If you would like to be a part of the ezPHP development team, then <p class="text-center"><a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!" target="_blank"><i class="fa fa-github-alt fa-large"></i> fork me on github! <i class="fa fa-github-alt fa-large"></i></a></p></p>
 			<p>This site is a working copy of what comes with the git repo and will be exactly what you get if you want to look at it and decide if you like it enough to contribute as a developer.</p>
 			
 		</div>
