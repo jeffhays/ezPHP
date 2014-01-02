@@ -5,7 +5,8 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<div class="panel callout" id="start1">
-						<p>The <?php echo config::name(); ?> is an open source object-oriented PHP framework written with a typical HMVC (no ORM in the model yet, so this is specifically talking about conveniently auto-loaded views, controllers, and models). The core of the project was started in 3 long nights by Jeff Hays out of a frustration with most light-weight oop PHP frameworks not having insanely simple routing and syntax.</p>
+						<p>The <?php echo config::name(); ?> is a lightweight HMVC PHP framework written specifically for developers to make routing and syntax as easy as possible. It comes with a basic database class that has an optional query builder, but also gives you the ability to write your queries out. Foundation CSS and Font Awesome have been added to make responsive design and application development quick and easy.</p>
+						<p>The core of the project was started in 3 long nights out of a frustration with most lightweight OOP PHP frameworks not having insanely simple routing and syntax. This project is still in its infancy so if you have suggestions or would like to contribute, feel free to send an email to <a href="mailto:jeff@offthewallmedia.com?subject=ezphp.org" alt="Email the developer" title="Email the developer" target="_blank">jeff@offthewallmedia.com</a>.</p>
 					</div>
 
 					<h3 class="subheader">Model, View, and Controller</h3>
@@ -37,7 +38,7 @@
 		<div class="large-4 columns">
 			<h3>&nbsp;</h3>
 			<div class="panel">
-				<h5 class="subheader">Current <?php echo config::name(); ?> Version: </h5><a class="small orange centered radius button" href="https://github.com/jphase/ezPHP/archive/master.zip" alt="Download <?php echo config::name() . ' ' . config::version(); ?>" title="Download <?php echo config::name() . ' ' . config::version(); ?>" target="_blank"><i class="fa fa-code-fork fa-flip-horizontal left"></i> <?php echo config::version(); ?> <i class="fa fa-code-fork right"></i></a>
+				<h5 class="subheader">Current <?php echo config::name(); ?> Version: </h5><a class="small orange centered button" href="https://github.com/jphase/ezPHP/archive/master.zip" alt="Download <?php echo config::name() . ' ' . config::version(); ?>" title="Download <?php echo config::name() . ' ' . config::version(); ?>" target="_blank"><i class="fa fa-code-fork fa-flip-horizontal left"></i> <?php echo config::version(); ?> <i class="fa fa-code-fork right"></i></a>
 				<p><small><div class="error text-center">(OMG!!! ezPHP just went open source!)</div></small></p>
 				<p>ezPHP has been recently made into a public repository on github.com so you can download, browse, and use the code at your liesure. Please keep in mind that this project is still in its infancy and the bulk of the code needs your help and critique to make it better! I'm always looking for more developers to help contribute to any of my open source projects, so if you like what you see then PLEASE PLEASE contribute!<p class="text-center"><a href="https://github.com/jphase/ezPHP/" alt="Fork jphase on github!" title="Fork jphase on github!" target="_blank"><i class="fa fa-github-alt fa-large"></i> fork me on github! <i class="fa fa-github-alt fa-large"></i></a></p></p>
 				<p class="text-center"><em>Read below to contact the developer...</em> <i class="fa fa-level-down fa-small"></i></p>

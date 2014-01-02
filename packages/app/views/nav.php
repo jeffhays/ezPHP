@@ -1,5 +1,5 @@
 	<div class="sticky">
-		<nav class="top-bar">
+		<nav class="top-bar" data-topbar>
 			<ul class="title-area">
 				<!-- Title Area -->
 				<li class="name">
@@ -91,15 +91,12 @@
 					<li><a href="/admin"><i class="fa fa-cog fa-spin"></i> Admin</a></li>
 				<?php } ?>
 					<li class="divider"></li>
-					<li class="has-form">
-						<?php if(user::loggedin()){ ?>
-							<div style="float:left;color:#fff;margin:.6em 1em .6em 0;">Welcome <?php echo user::val('username'); ?>!</div>
-							<form style="float:right" action="/admin/logout" method="post">
-								<button class="small orange radius button" type="submit"><i class="fa fa-signout"></i> Logout</button>
-							</form>
-						<?php } else { ?>
-	<a class="small radius button" href="/admin/login"><i class="fa fa-unlock-o"></i> Login</a>
-						<?php } ?>
+					<li>
+					<?php if(user::loggedin()){ ?>
+						<a href="/admin/logout"><i class="fa fa-sign-out"></i> Logout</a>
+					<?php } else { ?>
+						<a href="/admin/login"><i class="fa fa-sign-in"></i> Login</a>
+					<?php } ?>
 					</li>
 				</ul>
 			</section>

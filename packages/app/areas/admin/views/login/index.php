@@ -22,13 +22,13 @@
 		          <input type="password" name="password" id="password" placeholder="password">
 		        </div>
 		      </div>
-		      <input type="submit" class="small button radius" name="login" id="login" value="Login">
+		      <button type="submit" class="small button" name="login"><i class="fa fa-sign-in"></i> Login</button>
 		    </fieldset>
 		
 		    <?php if(isset($error) && strlen($error)){ ?>
 		      <div class="row">
 		        <div class="large-12 columns">
-		          <div data-alert class="alert-box alert radius">
+		          <div data-alert class="alert-box alert">
 		            <?php echo $error; ?>
 		            <a href="#" class="close">&times;</a>
 		          </div>
