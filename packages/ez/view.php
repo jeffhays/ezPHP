@@ -63,8 +63,10 @@ class view extends route {
 			
 			// Route the URL to the various model/view/controller locations
 			route::url();
-/* 			self::dbug(); */
-			
+
+			// Uncomment this line if you'd like to see what files ez is routing to
+			// self::dbug();
+
 			// Warn if controller doesn't exist
 			if(!file_exists(route::$controller_path)) die('<h1 class="alert">' . route::$controller_path . ' doesnt exist yo</div>');
 
@@ -76,12 +78,12 @@ class view extends route {
 			if(file_exists(LIB . 'defaultcontroller.php')) require_once(LIB . 'defaultcontroller.php');
 			if(file_exists(route::$controller_path)) require_once(route::$controller_path);
 
-			// Call controller's before()
-			controller::before();
+			// Call controller's before() function and pass params
+			$before = call_user_func_array('ez\app\controller::before', route::$params);
 			$action = route::$method;
 			
 			// Call controller's action function and pass in any parameters in the URL after the action
-			call_user_func_array("ez\app\controller::$action", route::$params);
+			if($before) call_user_func_array("ez\app\controller::$action", route::$params);
 
 			// Set variables
 			extract(self::$_variables);

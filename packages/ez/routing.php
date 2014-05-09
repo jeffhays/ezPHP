@@ -25,8 +25,8 @@ class route {
 	private static $_match = false;
 
 	// Add routes
-	public static function add($routes){
-		if(is_array($routes)){
+	public static function add($routes) {
+		if(is_array($routes)) {
 			self::$map = array_merge(self::$map, $routes);
 			return true;
 		}
@@ -34,8 +34,8 @@ class route {
 	}
 
 	// Remove routes
-	public static function rm($route){
-		if(is_array($route) && array_key_exists(self::$map, $route)){
+	public static function rm($route) {
+		if(is_array($route) && array_key_exists(self::$map, $route)) {
 			unset(self::$map[$route]);
 			return true;
 		}
@@ -43,19 +43,19 @@ class route {
 	}
 
 	// Show routes
-	public static function show(){
+	public static function show() {
 		ez::dbug(self::$map);
 	}
 
 	// Route current URL
-	public static function url(){
+	public static function url() {
 
 		// Get base url without params
 		$path = preg_replace('/\?(.*)/', '', $_SERVER['REQUEST_URI']);
 
 		// Check for routes from config
-		if(is_array(self::$map) && count(self::$map)){
-			foreach(self::$map as $url=>$base){
+		if(is_array(self::$map) && count(self::$map)) {
+			foreach(self::$map as $url=>$base) {
 				// Remove or add surrounding slashes as needed
 				$url = (substr($url, 0, 1) == '/') ? substr($url, 1) : $url;
 				$url = (substr($url, 0, 1) == '/') ? substr($url, 1) : $url;
@@ -67,7 +67,7 @@ class route {
 				$path = (substr($path, -1) != '/') ? $path . '/' : $path;
 				
 				// Check for matches in our routing map
-				if(preg_match($url, $path)){
+				if(preg_match($url, $path)) {
 					// We have matches in our routing array
 					self::$_match = true;
 					$path = preg_replace($url, '', $path);
@@ -82,7 +82,7 @@ class route {
 				$lib = array_filter(array_splice($lib, 1), 'strlen');
 
 				// Check for routing match
-				if(self::$_match && !self::$controller){
+				if(self::$_match && !self::$controller) {
 					// Set action
 					if(!self::$action) self::$action = isset($lib[0]) ? $lib[0] : config::$index;
 
@@ -90,8 +90,8 @@ class route {
 					if(!self::$method) self::$method = isset($lib[1]) ? $lib[1] : self::$action;
 					
 					// Set parameters array
-					if(isset($lib[2])){
-						for($i = 2; $i <= count($lib)-1; $i++){
+					if(isset($lib[2])) {
+						for($i = 2; $i <= count($lib)-1; $i++) {
 							array_push(self::$params, $lib[$i]);
 						}
 					}
@@ -115,7 +115,7 @@ class route {
 		$controller = $model = $view = (isset($lib[0]) && trim($lib[0]) != '/') ? $lib[0] : config::$index;
 
 		// No match
-		if(!self::$_match){
+		if(!self::$_match) {
 			// Set action
 			array_shift($lib);
 			if(!self::$action) $action = isset($lib[0]) ? $lib[0] : config::$index;
@@ -140,8 +140,8 @@ class route {
 		}
 		
 		// Set parameters array
-		if(!count(self::$params) && isset($lib[1])){
-			for($i = 1; $i <= count($lib)-1; $i++){
+		if(!count(self::$params) && isset($lib[1])) {
+			for($i = 1; $i <= count($lib)-1; $i++) {
 				array_push(self::$params, $lib[$i]);
 			}
 		}

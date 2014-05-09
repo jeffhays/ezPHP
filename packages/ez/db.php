@@ -10,11 +10,16 @@ use PDO;
 class db extends PDO {
 
 	// Default connection
-  private static $engine;
-  private static $host;
-  private static $db;
-  private static $user;
-  private static $pass;
+	private static $engine;
+	private static $host;
+	private static $db;
+	private static $user;
+	private static $pass;
+
+	// Default settings
+	private static $defaults = array(
+		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+	);
 
 	// Private variables
 	private $querytype = false;
@@ -24,6 +29,7 @@ class db extends PDO {
 	private $join = false;
 	private $where = false;
 	private $order = false;
+	private $group = false;
 	private $limit = false;
 	private $sql = false;
   
@@ -31,8 +37,8 @@ class db extends PDO {
 	static $i;
 	
 	// Setup connection
-	public static function init($host, $db, $user, $pass, $engine=false){
-		if(isset($host) && isset($db) && isset($user) && isset($pass)){
+	public static function init($host, $db, $user, $pass, $engine=false) {
+		if(isset($host) && isset($db) && isset($user) && isset($pass)) {
 			self::$host = $host;
 			self::$db = $db;
 			self::$user = $user;
@@ -44,7 +50,7 @@ class db extends PDO {
 	}
 	
 	// Setup or reset instance
-	public static function i($engine=false){
+	public static function i($engine=false) {
 		$c = __CLASS__;
 		self::$i = new $c(self::$engine ? self::$engine : 'mysql');
 
@@ -52,20 +58,19 @@ class db extends PDO {
 	}
 
 	// Constructor
-  public function __construct($engine){
-    self::$engine = $engine;
-    $dns = self::$engine.':dbname='.self::$db.';host='.self::$host;
-    parent::__construct($dns, self::$user, self::$pass);
-  }
+	public function __construct($engine) {
+		self::$engine = $engine;
+		$dsn = self::$engine.':dbname='.self::$db.';host='.self::$host;
+		parent::__construct($dsn, self::$user, self::$pass, self::$defaults);
+	}
 
 	// Select
 	public function select($arg=false) {
 		self::$i->querytype = 'SELECT';
-		if(is_array($arg) || $arg == false) {
+		if(is_array($arg) || !$arg) {
 			// Array input (better on resources)
 			if($arg) {
-				self::$i->columns = array();
-				foreach($arg as $a) self::$i->columns[] = $a;
+				self::$i->columns = implode(', ', $arg);
 			} else {
 				self::$i->columns = '*';				
 			}
@@ -113,12 +118,13 @@ class db extends PDO {
     
 	// Query
 	public function query($str=false) {
-    $query = $this->prepare($str);
+	    $query = $this->prepare($str);
 		try {
-      $this->beginTransaction();
+			$this->beginTransaction();
 			$query->execute();
 			$this->commit();
 		} catch(PDOException $e) {
+			die("ERROR");
 			$this->rollback();
 			$this->log('Error: ' . $e->getMessage());
 		}
@@ -205,14 +211,14 @@ class db extends PDO {
 		}
 	}
 
-	public function where($str=false, $operand=false, $condition=null) {
+	public function where($str=false, $operand=false, $condition=null, $naked=false) {
 		// Initialize temp variables for string building
 		$tmpwhere = $tmpsql = '';
 		if($str && $operand && $condition != null) {
 			// Start where
 			if(is_object(self::$i)) {
-				$tmpwhere .= "WHERE $str $operand ";
-				$tmpsql .= " WHERE $str $operand ";
+				$tmpwhere .= $naked ? "$str $operand " : "WHERE $str $operand ";
+				$tmpsql .= $naked ? "$str $operand " : " WHERE $str $operand ";
 				switch(strtoupper($operand)) {
 					case 'IN':
 					case 'NOT IN':
@@ -245,7 +251,7 @@ class db extends PDO {
 			}
 		} else if($str && $operand) {
 			// String and operand passed but no condition
-		if($this->columns && $this->table) {
+			if($this->columns && $this->table) {
 				$tmpwhere .= "WHERE $str $operand";
 				$tmpsql .= " WHERE $str $operand";
 			}
@@ -441,6 +447,19 @@ class db extends PDO {
 		return self::$i;
 	}
 	
+	// Group
+	public function group($cols=false) {
+		if(self::$i->querytype == 'SELECT' && self::$i->columns && self::$i->table) {
+			if(is_array($cols) && count($cols) > 0) {
+				self::$i->group = implode(', ', $cols);
+			} else if($cols) {
+				self::$i->group = $cols;
+			}
+			self::$i->sql .= " GROUP BY " . self::$i->group;
+		}
+		return self::$i;
+	}
+	
 	// Limit
 	public function limit($limit) {
 		if(self::$i->querytype == 'SELECT' && self::$i->columns && self::$i->table) {
@@ -451,7 +470,7 @@ class db extends PDO {
 	}
 
 	// This function or execute() below are required after insert, update, and delete commands
-	public function run() {
+	public function run() { 
 		return is_object(self::$i) ? $this->query(self::$i->sql) : false;
 	}
 
@@ -491,9 +510,9 @@ class db extends PDO {
 			// Execute current select SQL and set associative array
 			$result = $this->asarray();
 			$assoc = false;
-			if(is_array($result) && count($result)){
+			if(is_array($result) && count($result)) {
 				$assoc = array();
-				foreach($result as $r){
+				foreach($result as $r) {
 					$assoc[] = $r;
 				}
 			}
@@ -534,7 +553,7 @@ class db extends PDO {
 	public function row($index=false) {
 		if(self::$i->columns && self::$i->table) {
 			$obj = $this->asobject();
-			if(is_array($obj) && count($obj)){
+			if(is_array($obj) && count($obj)) {
 				return $obj[$index ? $index : 0];
 			}
 			return false;

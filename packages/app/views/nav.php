@@ -15,35 +15,35 @@
 					<li class="divider"></li>
 					<li class="has-dropdown"><a href="/usage/#"><i class="fa fa-code"></i> Usage</a>
 						<ul class="dropdown">
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 							<li><a href="/usage/#info"><i class="fa fa-info-circle"></i> Info</a></li>
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 							<li><a href="/usage/#routing"><i class="fa fa-sort-amount-asc"></i> Routing</a></li>
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 							<li><a href="/usage/#templating"><i class="fa fa-html5"></i> Templating</a></li>
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 							<li><a href="/usage/#user"><i class="fa fa-archive"></i> user class</a></li>
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 							<li><a href="/usage/#ez"><i class="fa fa-archive"></i> ez class</a></li>
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 							<li><a href="/usage/#autoload"><i class="fa fa-archive"></i> autoload class</a></li>
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 						</ul>
 					</li>
 					<li class="divider"></li>
 					<li class="has-dropdown"><a href="/install/#"><i class="fa fa-download-alt"></i> Install</a>
 						<ul class="dropdown">
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 							<li><a href="/install/#git"><i class="fa fa-github-alt"></i> Setup git</a></li>
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 							<li><a href="/install/#config"><i class="fa fa-gears"></i> Setup config</a></li>
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 							<li><a href="/install/#permissions"><i class="fa fa-group"></i> Setup permissions</a></li>
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 							<li><a href="/install/#ignore"><i class="fa fa-eye-slash"></i> Ignore app directory</a></li>
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 							<li><a href="/install/#update"><i class="fa fa-archive"></i> Update repo</a></li>
-							<li class="divider"></li>
+							<li class="divider hide-for-large"></li>
 						</ul>
 					</li>
 					<li class="divider<?php if(!user::loggedin()){ ?> hide-for-small<?php } ?>"></li>

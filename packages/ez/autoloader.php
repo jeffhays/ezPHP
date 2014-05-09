@@ -32,8 +32,8 @@ class autoloader {
 	private static $_map = array();
 
 	// Add classes to load
-	public static function add_classes($classes){
-		if(is_array($classes)){
+	public static function add_classes($classes) {
+		if(is_array($classes)) {
 			self::$_map = array_merge(self::$_map, $classes);
 			return true;
 		}
@@ -41,9 +41,9 @@ class autoloader {
 	}
 
 	// Add class to load
-	public static function add_class($namespace, $path){
-		if($namespace && $path){
-			if(!isset(self::$_map[$namespace])){
+	public static function add_class($namespace, $path) {
+		if($namespace && $path) {
+			if(!isset(self::$_map[$namespace])) {
 				self::$_map[$namespace] = $path;
 				return true;
 			}
@@ -52,9 +52,9 @@ class autoloader {
 	}
 	
 	// Function that takes an array and strips out all files/directories that don't contain the PHP extension from the config
-	public static function libfiles($input){
-		if(is_array($input) && count($input)){
-			foreach($input as $k=>$i){
+	public static function libfiles($input) {
+		if(is_array($input) && count($input)) {
+			foreach($input as $k=>$i) {
 				if(!strstr($i, EXT)) unset($input[$k]);
 			}
 			return $input;
@@ -63,11 +63,11 @@ class autoloader {
 	}
 	
 	// Automatically include files from $path containing PHP extension from the config
-	public static function libs($path){
+	public static function libs($path) {
 		$files = scandir($path);
 		$files = self::libfiles($files);
-		if(is_array($files) && count($files)){
-			foreach($files as $file){
+		if(is_array($files) && count($files)) {
+			foreach($files as $file) {
 				require_once($path . $file);
 			}
 			return true;
@@ -76,7 +76,7 @@ class autoloader {
 	}
 
 	// Return current classes
-	public static function get_classes(){
+	public static function get_classes() {
 		return self::$_map;
 	}
 
@@ -85,7 +85,7 @@ class autoloader {
 	 *
 	 * @param string $sep The separator to use.
 	 */
-	public static function set_namespace_separator($sep){
+	public static function set_namespace_separator($sep) {
 		self::$_namespace_separator = $sep;
 	}
 
@@ -94,7 +94,7 @@ class autoloader {
 	 *
 	 * @return void
 	 */
-	public static function get_namespace_separator(){
+	public static function get_namespace_separator() {
 		return self::$_namespace_separator;
 	}
 
@@ -103,7 +103,7 @@ class autoloader {
 	 *
 	 * @param string $includePath
 	 */
-	public static function set_include_path($path){
+	public static function set_include_path($path) {
 		self::$_include_path = $path;
 	}
 
@@ -112,7 +112,7 @@ class autoloader {
 	 *
 	 * @return string $includePath
 	 */
-	public static function get_include_path(){
+	public static function get_include_path() {
 		return self::$_include_path;
 	}
 
@@ -121,7 +121,7 @@ class autoloader {
 	 *
 	 * @param string $fileExtension
 	 */
-	public static function set_file_extension($extension){
+	public static function set_file_extension($extension) {
 		self::$_file_extension = $extension;
 	}
 
@@ -130,21 +130,21 @@ class autoloader {
 	 *
 	 * @return string $fileExtension
 	 */
-	public static function get_file_extension(){
+	public static function get_file_extension() {
 		return self::$_file_extension;
 	}
 
 	/*
 	 * Installs this class loader on the SPL autoload stack.
 	 */
-	public static function register(){
+	public static function register() {
 		spl_autoload_register('ez\core\autoloader::load_class');
 	}
 
 	/*
 	 * Uninstalls this class loader from the SPL autoloader stack.
 	 */
-	public static function unregister(){
+	public static function unregister() {
 		spl_autoload_unregister('ez\core\autoloader::load_class');
 	}
 
@@ -154,7 +154,7 @@ class autoloader {
 	 * @param string $class The name of the class to load.
 	 * @return void
 	 */
-	public static function load_class($class){
+	public static function load_class($class) {
 		if (null === self::$_namespace || self::$_namespace . self::$_namespace_separator === substr($class, 0, strlen(self::$_namespace . self::$_namespace_separator))) {
 			// Initialize namespace, class, and file
 			$namespace = $file = '';
@@ -165,15 +165,15 @@ class autoloader {
 			}
 
 			// Check for namespace
-			if(!empty($namespace)){
+			if(!empty($namespace)) {
 
 				// Check for map of this namespace
 				$newspace = $namespace . self::$_namespace_separator . $class;
-				if(isset(self::$_map[$newspace])){
+				if(isset(self::$_map[$newspace])) {
 
 					// We have a map
 					$path = self::$_map[$newspace];
-					if(file_exists($path)){
+					if(file_exists($path)) {
 						require_once($path);
 						return true;
 					}
@@ -184,7 +184,7 @@ class autoloader {
 			$file .= str_replace('_', DIRECTORY_SEPARATOR, $class) . self::$_file_extension;
 
 			// Require the file if it exists in our include path
-			if(file_exists(self::$_include_path . $file) || file_exists($file)){
+			if(file_exists(self::$_include_path . $file) || file_exists($file)) {
 				require (self::$_include_path !== null ? self::$_include_path . $file : $file);
 			} else {
 				echo "Couldn't load the file: <strong>" . self::$_include_path . "$file</strong><br>";
