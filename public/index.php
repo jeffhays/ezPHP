@@ -23,11 +23,11 @@ defined('LOG') || define('LOG', TMP . 'logs' . DS);
 /* require_once(dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php'); */
 
 
-if(!function_exists('bootstrap_autoloader')){
+if(!function_exists('bootstrap_autoloader')) {
 /*
  *	Bootstrap autoload and startup routine
  */
-	function bootstrap_autoloader(){
+	function bootstrap_autoloader() {
 		// Load our modified autoloader class
 		require_once(CORE . 'autoloader.php');
 		autoload::set_include_path(PKG);
@@ -45,7 +45,7 @@ if(!function_exists('bootstrap_autoloader')){
 		autoload::register();
 		
 		// Setup reporting
-		if(config::$debug){
+		if(config::$debug) {
 			error_reporting(config::$error_reporting);
 			ini_set('display_errors', 1);
 		} else {
@@ -57,6 +57,9 @@ if(!function_exists('bootstrap_autoloader')){
 		ini_set('log_errors', config::$log_errors);
 		ini_set('error_log', LOG . config::$error_log);
 		
+		// Set timezone
+		date_default_timezone_set(config::$timezone);
+
 		// Load classes - usage: array(namespace\class => path/to/class.php)
 		autoload::add_classes(array(
 			'ez\core\user' => CORE . 'user.php',
@@ -97,13 +100,13 @@ if(!function_exists('bootstrap_autoloader')){
 	}
 }
 
-if(!function_exists('alias')){
+if(!function_exists('alias')) {
 /*
  *	Alias function to assign function aliases to a class which allows us to globally alias rather than having to use "use namespace\class"
  */
-	function alias($array){
-		if(is_array($array)){
-			foreach($array as $class=>$alias){
+	function alias($array) {
+		if(is_array($array)) {
+			foreach($array as $class=>$alias) {
 				class_alias($class, $alias);
 			}
 		}

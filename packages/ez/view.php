@@ -28,7 +28,7 @@ class view extends route {
 	}
 	
 	// Debug loaded files
-	public static function dbug(){
+	public static function dbug() {
 		$values = array(
 			'classes' => array(
 				'controller' => route::$controller,
@@ -53,13 +53,13 @@ class view extends route {
 	}
 
 	// Function to render the view based on routes and current URL
-	public static function render($noheader=false) {
+	public static function render($noheader = false) {
 
 		// Get base url without params
 		$path = preg_replace('/\?(.*)/', '', $_SERVER['REQUEST_URI']);
 
 		// Check for routes from our route class
-		if(is_array(route::$map) && count(route::$map)){
+		if(is_array(route::$map) && count(route::$map)) {
 			
 			// Route the URL to the various model/view/controller locations
 			route::url();
@@ -89,37 +89,37 @@ class view extends route {
 			extract(self::$_variables);
 			
 			// View
-			if(is_dir(route::$view)){
+			if(is_dir(route::$view)) {
 
 				// Header
-				if(file_exists(route::$view . DS . 'header' . EXT)){
+				if(file_exists(route::$view . DS . 'header' . EXT)) {
 					include(route::$view . DS . 'header' . EXT);
 				} else {
 					include(route::$base . 'views' . DS . 'header' . EXT);
 				}
 				
 				// Nav
-				if(file_exists(route::$view . DS . 'nav' . EXT)){
+				if(file_exists(route::$view . DS . 'nav' . EXT)) {
 					include(route::$view . DS . 'nav' . EXT);
 				} else {
 					include(route::$base . 'views' . DS . 'nav' . EXT);
 				}
 				
 				// Index
-				if(file_exists(route::$view . DS . route::$method . EXT)){
+				if(file_exists(route::$view . DS . route::$method . EXT)) {
 					include(route::$view . DS . route::$method . EXT);
 				} else {
 					include(route::$base . 'views' . DS . route::$action . DS . config::$index . EXT);
 				}
 				
 				// Footer
-				if(file_exists(route::$view . DS . 'footer' . EXT)){
+				if(file_exists(route::$view . DS . 'footer' . EXT)) {
 					include(route::$view . DS . 'footer' . EXT);
 				} else {
 					include(route::$base . 'views' . DS . 'footer' . EXT);
 				}
 				
-			} else if(file_exists(route::$view . EXT)){
+			} else if(file_exists(route::$view . EXT)) {
 				// View file instead of folder
 				include(route::$view . EXT);
 			}

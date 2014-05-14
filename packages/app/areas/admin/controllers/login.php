@@ -8,14 +8,14 @@ use ez\core\view as view;
 class controller extends \ez\app\DefaultController {
 	
 	// Function called before view
-	public static function before(){
+	public static function before() {
 
 	}
 	
 	// login action
-	public static function login(){
+	public static function login() {
 		// Login user
-		if(is_array($_POST) && isset($_POST['username']) && isset($_POST['password'])){
+		if(is_array($_POST) && isset($_POST['username']) && isset($_POST['password'])) {
 			// Example to select a user/pass combo that was posted with the ez_users table using an md5 password
 			$user = db::i()->select()->from('ez_users')
 										 ->where('username', '=', $_POST['username'])
@@ -27,7 +27,7 @@ class controller extends \ez\app\DefaultController {
 	}
 
 	// Function called after view
-	public static function after(){
+	public static function after() {
 
 	}
 

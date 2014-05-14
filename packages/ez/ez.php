@@ -9,13 +9,13 @@ class ez {
 	private static $_timer_stop = false;
 
 	// Alias for dbug::dump()	
-	public static function dbug($input){
+	public static function dbug($input) {
 		dbug::dump($input);
 	}
 	
 	// Time a script or operation
-	public static function timer(){
-		if(!self::$_timer_start){
+	public static function timer() {
+		if(!self::$_timer_start) {
 			self::$_timer_start = microtime(true);
 		} else {
 			self::$_timer_stop = microtime(true);

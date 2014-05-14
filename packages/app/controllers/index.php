@@ -4,15 +4,16 @@ use ez\core\view as view;
 
 class controller extends \ez\app\DefaultController {
 	
-	public static function before(){
+	public function before() {
+		// Return true for the actions below to execute
+		return true;
+	}
+	
+	public function index() {
 
 	}
 	
-	public static function index(){
-
-	}
-	
-	public static function after(){
+	public function after() {
 
 	}
 	

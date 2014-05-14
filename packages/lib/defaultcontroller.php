@@ -14,13 +14,8 @@ class DefaultController {
 	protected $_template;
 
 	// Alias to view::set()
-	public static function set($key, $val){
+	public static function set($key, $val) {
 		return view::set($key, $val);
-	}
-			
-	// Alias to dbug::dump()
-	public static function dbug($val){
-		return dbug::dump($val);
 	}
 			
 }

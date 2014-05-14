@@ -6,23 +6,23 @@ use ez\lib\dBug as dbug;
 class route {
 
 	// Default routes
-	public static $map = array();
-	public static $params = array();
+	protected static $map = array();
+	protected static $params = array();
 
 	// Routed classes
-	public static $controller = false;
-	public static $model = false;
-	public static $action = false;
-	public static $method = false;
+	protected static $controller = false;
+	protected static $model = false;
+	protected static $action = false;
+	protected static $method = false;
 
 	// Routed paths
-	public static $base = false;
-	public static $controller_path = false;
-	public static $model_path = false;
-	public static $view = false;
+	protected static $base = false;
+	protected static $controller_path = false;
+	protected static $model_path = false;
+	protected static $view = false;
 	
 	// Private variables
-	private static $_match = false;
+	protected static $_match = false;
 
 	// Add routes
 	public static function add($routes) {

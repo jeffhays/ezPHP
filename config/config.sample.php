@@ -38,6 +38,9 @@ class config {
 	public static $site_js = '/js/';
 	public static $site_img = '/img/';
 	
+	// Timezone settings
+	public static $timezone = 'America/Los_Angeles';
+	
 	// Session settings
 	public static $session_path = 'tmp/sessions';
 	public static $cookie_lifetime = '7776000';
@@ -48,45 +51,45 @@ class config {
 	public static $use_trans_sid = 'off';
 	
 	// Site settings functions
-	public static function title(){
+	public static function title() {
 		return self::$site_title;
 	}
-	public static function description(){
+	public static function description() {
 		return self::$site_description;
 	}
-	public static function name(){
+	public static function name() {
 		return self::$site_name;
 	}
-	public static function url(){
+	public static function url() {
 		return self::$site_url;
 	}
-	public static function css(){
+	public static function css() {
 		return self::$site_css;
 	}
-	public static function js(){
+	public static function js() {
 		return self::$site_js;
 	}
-	public static function img(){
+	public static function img() {
 		return self::$site_img;
 	}
-	public static function version(){
+	public static function version() {
 		return self::$site_version;
 	}
 
 	// Database functions
-	public static function dbengine(){
+	public static function dbengine() {
 		return self::$_dbengine;
 	}
-	public static function dbhost(){
+	public static function dbhost() {
 		return self::$_dbhost;
 	}
-	public static function dbname(){
+	public static function dbname() {
 		return self::$_dbname;
 	}
-	public static function dbuser(){
+	public static function dbuser() {
 		return self::$_dbuser;
 	}
-	public static function dbpass(){
+	public static function dbpass() {
 		return self::$_dbpass;
 	}
 

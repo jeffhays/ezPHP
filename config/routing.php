@@ -21,7 +21,7 @@ class routing {
 	);
 	
 	// Return routes
-	public static function routes(){
+	public static function routes() {
 		return self::$_routes;
 	}
 	
