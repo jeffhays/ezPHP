@@ -1,6 +1,6 @@
-*.log
-*.log
-config.php
+logs/*.log
+config/config.php
+tmp/sessions/*
 
 # OS generated files #
 ######################
