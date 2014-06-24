@@ -64,7 +64,7 @@ class view extends route {
 			// Route the URL to the various model/view/controller locations
 			route::url();
 
-			// Uncomment this line if you'd like to see what files ez is routing to
+			// Uncomment this line if you'd like to see what files ez is routing to (or just call view::dbug(); from anywhere)
 			// self::dbug();
 
 			// Warn if controller doesn't exist
@@ -108,8 +108,11 @@ class view extends route {
 				// Index
 				if(file_exists(route::$view . DS . route::$method . EXT)) {
 					include(route::$view . DS . route::$method . EXT);
-				} else {
+				} elseif(file_exists(route::$base . 'views' . DS . route::$action . DS . config::$index . EXT)) {
 					include(route::$base . 'views' . DS . route::$action . DS . config::$index . EXT);
+				} else {
+					// Fail over to the default index
+					include(route::$view . DS . 'index' . EXT);
 				}
 				
 				// Footer

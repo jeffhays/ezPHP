@@ -62,12 +62,13 @@ if(!function_exists('bootstrap_autoloader')) {
 
 		// Load classes - usage: array(namespace\class => path/to/class.php)
 		autoload::add_classes(array(
-			'ez\core\user' => CORE . 'user.php',
-			'ez\core\route' => CORE . 'routing.php',
-			'ez\core\db' => CORE . 'db.php',
-			'ez\core\ez' => CORE . 'ez.php',
-			'ez\core\view' => CORE . 'view.php',
-			'ez\core\html' => CORE . 'html.php'
+			'ez\core\user' => CORE . 'user' . EXT,
+			'ez\core\route' => CORE . 'routing' . EXT,
+			// 'ez\core\db' => CORE . 'db' . EXT,
+			'ez\app\db' => LIB . 'db' . DS . 'db' . EXT,
+			'ez\core\ez' => CORE . 'ez' . EXT,
+			'ez\core\view' => CORE . 'view' . EXT,
+			'ez\core\html' => CORE . 'html' . EXT,
 		));
 		
 		// Dispatch auto loader
@@ -79,11 +80,12 @@ if(!function_exists('bootstrap_autoloader')) {
 			'ez\routing' => 'routing',
 			'ez\core\autoloader' => 'autoload',
 			'ez\core\user' => 'user',
-			'ez\core\db' => 'db',
+			// 'ez\core\db' => 'db',
+			'ez\app\db' => 'db',
 			'ez\core\ez' => 'ez',
 			'ez\core\html' => 'html',
 			'ez\core\route' => 'route',
-			'ez\core\view' => 'view'
+			'ez\core\view' => 'view',
 		));
 
 		// Start session if needed
